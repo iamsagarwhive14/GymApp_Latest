@@ -71,9 +71,9 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
               ),
-              Flexible(
+              Expanded(
                 child: Container(
-                  alignment: Alignment.topCenter,
+                  alignment: Alignment.center,
                   margin: const EdgeInsets.all(4),
                   padding: const EdgeInsets.all(4),
                   child: Card(

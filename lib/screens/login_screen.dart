@@ -6,6 +6,7 @@ import 'package:gym_mgmtsystem/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/login_provider.dart';
+import '../res/components/input_text_field.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = 'login_Screen';
@@ -16,10 +17,23 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _isLoading = false;
+  bool isTextFieldEnabled = true;
+  bool _passwordVisible = false;
+  final _formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   FocusNode emailFocusNode = FocusNode();
   FocusNode passwordFocusNode = FocusNode();
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _passwordVisible = false;
+    emailController.dispose();
+    passwordController.dispose();
+    emailFocusNode.dispose();
+    passwordFocusNode.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -133,39 +147,49 @@ class _LoginScreenState extends State<LoginScreen> {
                         const SizedBox(
                           height: 20.0,
                         ),
-                        TextField(
-                          controller: emailController,
-                          focusNode: emailFocusNode,
-                          decoration: const InputDecoration(
-                            constraints:
-                                BoxConstraints.tightFor(width: 330, height: 80),
-                            labelText: 'email',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(20.0),
-                              ),
+                        Form(
+                          key: _formKey,
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 15, bottom: 15),
+                            child: Column(
+                              children: [
+                                InputTextField(
+                                  icon: Icons.email,
+                                  enable: isTextFieldEnabled,
+                                  myController: emailController,
+                                  focusNode: emailFocusNode,
+                                  onFieldSubmittedValue: (value) {},
+                                  onValidator: (value) {
+                                    return value.isEmpty
+                                        ? 'Email cannot be blank'
+                                        : null;
+                                  },
+                                  keyBoardType: TextInputType.emailAddress,
+                                  hint: 'Enter email',
+                                  obscureText: false,
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                InputTextField(
+                                  icon: _passwordVisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  enable: isTextFieldEnabled,
+                                  myController: passwordController,
+                                  focusNode: passwordFocusNode,
+                                  onFieldSubmittedValue: (value) {},
+                                  onValidator: (value) {
+                                    return value.isEmpty
+                                        ? 'Password cannot be blank'
+                                        : null;
+                                  },
+                                  keyBoardType: TextInputType.emailAddress,
+                                  hint: 'Enter password',
+                                  obscureText: !_passwordVisible,
+                                ),
+                              ],
                             ),
-                          ),
-                          onSubmitted: (val) {
-                            FocusScope.of(context)
-                                .requestFocus(passwordFocusNode);
-                          },
-                        ),
-                        const SizedBox(
-                          height: 15.0,
-                        ),
-                        TextFormField(
-                          controller: passwordController,
-                          focusNode: passwordFocusNode,
-                          decoration: const InputDecoration(
-                            constraints:
-                                BoxConstraints.tightFor(width: 330, height: 80),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(20.0),
-                              ),
-                            ),
-                            labelText: 'password',
                           ),
                         ),
                         Container(
@@ -211,6 +235,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   context);
                               setState(() {
                                 _isLoading = false;
+                                isTextFieldEnabled = true;
                               });
 
                               Usermodel? responseApi = loginProvide.apiResult;

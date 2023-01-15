@@ -4,12 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gym_mgmtsystem/model/PaymentHistory.dart';
 import 'package:gym_mgmtsystem/providers/payment_provider.dart';
 import 'package:gym_mgmtsystem/screens/details_screen.dart';
-import 'package:http/http.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../model/PaymentHistory.dart';
-import '../model/Result.dart';
-import '../providers/login_provider.dart';
 
 class PaymentHistory extends StatefulWidget {
   static const String routeName = 'paymentHistory_screen';

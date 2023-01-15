@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gym_mgmtsystem/main.dart';
+import 'package:gym_mgmtsystem/screens/login_screen.dart';
 import 'package:gym_mgmtsystem/screens/measurement.dart';
 import 'package:gym_mgmtsystem/screens/payment_history.dart';
 import 'package:gym_mgmtsystem/screens/product.dart';
@@ -15,9 +17,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   List<Widget> screens = [
-    PaymentHistory(),
     Profile(),
-    Measurement(),
+    PaymentHistory(),
+    MeasurementScreen(),
     Product(),
   ];
   @override
@@ -33,16 +35,14 @@ class _HomeScreenState extends State<HomeScreen> {
         iconSize: 22,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.location_history_outlined,
-            ),
-            label: 'History',
+            icon: Icon(Icons.account_circle),
+            label: 'Profile',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.account_circle,
+              Icons.home,
             ),
-            label: 'profile',
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(
