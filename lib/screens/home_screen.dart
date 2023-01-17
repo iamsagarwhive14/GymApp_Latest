@@ -17,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   List<Widget> screens = [
-    Profile(),
+    ProfileScreen(),
     PaymentHistory(),
     MeasurementScreen(),
     Product(),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../main.dart';
+import '../utilities/routes/route_name.dart';
 import 'login_screen.dart';
 
 class Product extends StatelessWidget {
@@ -19,8 +20,7 @@ class Product extends StatelessWidget {
             onTap: () async {
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs?.clear();
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => LoginScreen()));
+              Navigator.pushNamed(context, RouteName.loginScreen);
             },
             child: Icon(
               Icons.logout,

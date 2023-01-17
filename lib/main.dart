@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:gym_mgmtsystem/providers/gym_list_provider.dart';
 import 'package:gym_mgmtsystem/providers/login_provider.dart';
 import 'package:gym_mgmtsystem/providers/measurement_provider.dart';
 import 'package:gym_mgmtsystem/providers/payment_provider.dart';
-import 'package:gym_mgmtsystem/screens/home_screen.dart';
-import 'package:gym_mgmtsystem/screens/login_screen.dart';
-import 'package:gym_mgmtsystem/screens/measurement.dart';
-import 'package:gym_mgmtsystem/screens/payment_history.dart';
-import 'package:gym_mgmtsystem/screens/product.dart';
-import 'package:gym_mgmtsystem/screens/profile.dart';
-import 'package:gym_mgmtsystem/screens/splash/splash_screen.dart';
+import 'package:gym_mgmtsystem/utilities/routes/route_name.dart';
+import 'package:gym_mgmtsystem/utilities/routes/routes.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+late SharedPreferences sp;
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  sp = await SharedPreferences.getInstance();
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(
@@ -23,6 +22,9 @@ void main() {
       ),
       ChangeNotifierProvider(
         create: (context) => MeasurementProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => GymListProvider(),
       ),
     ], child: MyApp()),
   );
@@ -40,16 +42,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: SplashScreen.routeName,
-      routes: {
-        LoginScreen.routeName: (context) => const LoginScreen(),
-        HomeScreen.routeName: (context) => const HomeScreen(),
-        PaymentHistory.routeName: (context) => const PaymentHistory(),
-        MeasurementScreen.routeName: (context) => const MeasurementScreen(),
-        Product.routeName: (context) => const Product(),
-        Profile.routeName: (context) => const Profile(),
-        SplashScreen.routeName: (context) => const SplashScreen(),
-      },
+      initialRoute: RouteName.splashScreen,
+      onGenerateRoute: Routes.generateRoute,
+      // routes: {
+      //   LoginScreen.routeName: (context) => const LoginScreen(),
+      //   HomeScreen.routeName: (context) => const HomeScreen(),
+      //   PaymentHistory.routeName: (context) => const PaymentHistory(),
+      //   MeasurementScreen.routeName: (context) => const MeasurementScreen(),
+      //   Product.routeName: (context) => const Product(),
+      //   Profile.routeName: (context) => const Profile(),
+      //   SplashScreen.routeName: (context) => const SplashScreen(),
+      // },
     );
   }
 }

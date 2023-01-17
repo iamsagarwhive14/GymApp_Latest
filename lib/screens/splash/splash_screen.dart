@@ -2,8 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:gym_mgmtsystem/screens/login_screen.dart';
+import 'package:gym_mgmtsystem/utilities/routes/routes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../utilities/routes/route_name.dart';
+import '../home_screen.dart';
+import '../home_screen.dart';
+import '../home_screen.dart';
 import '../home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -58,11 +63,9 @@ class _SplashScreenState extends State<SplashScreen> {
     var status = prefs.getString('token');
     print(status);
     if (status != null) {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      Navigator.pushNamed(context, RouteName.homeScreen);
     } else {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => LoginScreen()));
+      Navigator.pushNamed(context, RouteName.welcomeScreen);
     }
   }
 }

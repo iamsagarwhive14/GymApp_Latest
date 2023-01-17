@@ -3,15 +3,15 @@ import 'package:gym_mgmtsystem/providers/login_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Profile extends StatefulWidget {
+class ProfileScreen extends StatefulWidget {
   static const String routeName = 'profile_screen';
-  const Profile({Key? key}) : super(key: key);
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileState extends State<Profile> {
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final loginProvide = Provider.of<LoginProvide>(context);

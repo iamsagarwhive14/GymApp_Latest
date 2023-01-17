@@ -10,7 +10,7 @@ class InputTextField extends StatelessWidget {
   final String hint;
   final bool obscureText;
   final bool enable, autoFocus;
-  final IconData icon;
+  final IconButton icon;
 
   const InputTextField({
     Key? key,
@@ -23,7 +23,7 @@ class InputTextField extends StatelessWidget {
     required this.obscureText,
     this.enable = true,
     this.autoFocus = false,
-    this.icon = Icons.remove_red_eye_outlined,
+    required this.icon,
   }) : super(key: key);
 
   @override
@@ -42,7 +42,7 @@ class InputTextField extends StatelessWidget {
               fontSize: 19,
             ),
         decoration: InputDecoration(
-          suffixIcon: Icon(icon),
+          suffixIcon: icon,
           hintText: hint,
           enabled: enable,
           contentPadding: const EdgeInsets.all(17),
@@ -57,7 +57,7 @@ class InputTextField extends StatelessWidget {
             ),
           ),
           focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.lightBlue),
+            borderSide: BorderSide(color: Colors.white),
             borderRadius: BorderRadius.all(
               Radius.circular(30),
             ),

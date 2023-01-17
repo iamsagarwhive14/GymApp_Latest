@@ -1,15 +1,18 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:gym_mgmtsystem/main.dart';
 import 'package:gym_mgmtsystem/model/user_model.dart';
 import 'package:gym_mgmtsystem/screens/home_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../providers/gym_list_provider.dart';
 import '../providers/login_provider.dart';
 import '../res/components/input_text_field.dart';
+import '../utilities/routes/route_name.dart';
 
 class LoginScreen extends StatefulWidget {
-  static const String routeName = 'login_Screen';
   const LoginScreen({Key? key}) : super(key: key);
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -17,18 +20,35 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _isLoading = false;
+
   bool isTextFieldEnabled = true;
-  bool _passwordVisible = false;
+  bool _passwordVisible = true;
+
+  String gymName = '';
+  String gymLogo = '';
+
   final _formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   FocusNode emailFocusNode = FocusNode();
   FocusNode passwordFocusNode = FocusNode();
+
+  Future<void> getGymListSharedPreference() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    gymName = sharedPreferences.getString('name') ?? '';
+    gymLogo = sharedPreferences.getString('logo') ?? '';
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getGymListSharedPreference();
+  }
+
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    _passwordVisible = false;
     emailController.dispose();
     passwordController.dispose();
     emailFocusNode.dispose();
@@ -38,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final loginProvide = Provider.of<LoginProvide>(context);
-
+    final gymNameProvider = Provider.of<GymListProvider>(context);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: Colors.transparent,
@@ -59,10 +79,15 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 30.0,
               ),
-              const Center(
+              Center(
                 child: Flexible(
                   child: Image(
-                    image: AssetImage('assets/images/image 11.png'),
+                    width: 300,
+                    height: 120,
+                    fit: BoxFit.cover,
+                    image: NetworkImage(
+                      gymLogo.toString(),
+                    ),
                   ),
                 ),
               ),
@@ -112,9 +137,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
-                            children: const [
+                            children: [
                               Text(
-                                'Welcome Gymers',
+                                gymName.toString(),
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 20.0,
@@ -154,7 +179,15 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Column(
                               children: [
                                 InputTextField(
-                                  icon: Icons.email,
+                                  icon: IconButton(
+                                    icon: Icon(_passwordVisible
+                                        ? Icons.email
+                                        : Icons.email),
+                                    color: Colors.black45,
+                                    onPressed: () {
+                                      _passwordVisible = _passwordVisible;
+                                    },
+                                  ),
                                   enable: isTextFieldEnabled,
                                   myController: emailController,
                                   focusNode: emailFocusNode,
@@ -172,9 +205,17 @@ class _LoginScreenState extends State<LoginScreen> {
                                   height: 20,
                                 ),
                                 InputTextField(
-                                  icon: _passwordVisible
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
+                                  icon: IconButton(
+                                    icon: Icon(_passwordVisible
+                                        ? Icons.visibility_off
+                                        : Icons.visibility),
+                                    color: Colors.black45,
+                                    onPressed: () {
+                                      setState(() {
+                                        _passwordVisible = !_passwordVisible;
+                                      });
+                                    },
+                                  ),
                                   enable: isTextFieldEnabled,
                                   myController: passwordController,
                                   focusNode: passwordFocusNode,
@@ -186,7 +227,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   },
                                   keyBoardType: TextInputType.emailAddress,
                                   hint: 'Enter password',
-                                  obscureText: !_passwordVisible,
+                                  obscureText: _passwordVisible,
                                 ),
                               ],
                             ),
@@ -239,12 +280,13 @@ class _LoginScreenState extends State<LoginScreen> {
                               });
 
                               Usermodel? responseApi = loginProvide.apiResult;
+                              setState(() {
+                                isTextFieldEnabled = true;
+                              });
 
                               if (responseApi?.response == true) {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => HomeScreen()));
+                                Navigator.pushNamed(
+                                    context, RouteName.homeScreen);
                               }
                             },
                             child: _isLoading
