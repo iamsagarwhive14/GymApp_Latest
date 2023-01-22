@@ -91,7 +91,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                     child: CircularProgressIndicator(
                                     color: Colors.white,
                                   ))
-                                : Text('summit'),
+                                : Text('submit'),
                             onPressed: () async {
                               setState(() {
                                 _isLoading = true;

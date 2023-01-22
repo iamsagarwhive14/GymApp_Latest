@@ -10,12 +10,16 @@ import '../utilities/constant.dart';
 class PaymentHistoryProvider extends ChangeNotifier {
   Future<PaymentHistoryData?> paymentHistory() async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
+
     var apiToken = _prefs.getString('token');
-    // print(apiToken);
+    String gymUrlAPI = _prefs.getString('url') ?? '';
+
+    String urlSet = gymUrlAPI + Constants.paymentHistory;
+
     try {
       final response = await get(
-        Uri.parse(Constants.baseUrl + Constants.paymentHistory),
-        // Send authorization headers to the backend.
+        Uri.parse(urlSet),
+        // Send authorization headers here.
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
@@ -24,13 +28,17 @@ class PaymentHistoryProvider extends ChangeNotifier {
         },
       );
       if (response.statusCode == 200) {
+        print(response.statusCode);
         var responseJson = jsonDecode(response.body);
         notifyListeners();
-        // print(responseJson);
+        print(responseJson);
         return PaymentHistoryData.fromJson(responseJson);
       } else {
         print('data is not available');
+        print('data  is not created ' + response.statusCode.toString());
       }
-    } catch (e) {}
+    } catch (e) {
+      print(e.toString());
+    }
   }
 }

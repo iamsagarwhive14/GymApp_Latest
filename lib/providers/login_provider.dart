@@ -9,21 +9,28 @@ import '../model/user_model.dart';
 import '../utilities/constant.dart';
 
 class LoginProvide extends ChangeNotifier {
+  String gymUrl = '';
+  String gymId = '';
+
+  Future<void> getGymListSharedPreference() async {}
+
   Usermodel? _result;
   String? userName;
   Usermodel? get apiResult => _result;
 
   Future<Object?> login(String email, password, context) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    String gymUrlAPI = sharedPreferences.getString('url') ?? '';
+    gymId = sharedPreferences.getString('gymId') ?? '';
+
     var data;
+    String urlSet = gymUrlAPI + Constants.login;
+    print('this is login url' + urlSet);
     try {
-      Response response = await get(
-        Uri.parse(Constants.baseUrl + Constants.login).replace(
-          queryParameters: {
-            'username': email,
-            'password': password,
-          },
-        ),
-      );
+      Response response = await post(Uri.parse(urlSet), body: {
+        'username': email,
+        'password': password,
+      });
       if (response.statusCode == 200) {
         data = await jsonDecode(response.body.toString());
         _result = Usermodel.fromJson(data);
@@ -46,10 +53,11 @@ class LoginProvide extends ChangeNotifier {
 
         // print('account created successfully');
       } else {
-        // print('account is not created ');
+        print(
+            "Niko" 'account is not created ' + response.statusCode.toString());
       }
     } catch (e) {
-      print(e);
+      print("Niko$e");
     }
   }
 

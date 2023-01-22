@@ -53,10 +53,10 @@ class GymListProvider extends ChangeNotifier {
       String name, String logo, String url, String gymId) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     await sharedPreferences.setString('name', name);
-    print(name);
     await sharedPreferences.setString('logo', logo);
     await sharedPreferences.setString('url', url);
-    await sharedPreferences.setString('gym_id', gymId);
+    await sharedPreferences.setString('gymId', gymId);
+    print("url" + url);
     notifyListeners();
   }
 }

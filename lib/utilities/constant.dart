@@ -1,8 +1,6 @@
 class Constants {
-  static const String baseUrl = 'http://gymdemo.ashokfitness.com/api/v1/';
-  static const String login = 'login';
-  static const String paymentHistory = 'payment/history';
-  static const String measurementData = 'measurements';
-  static const String gymListData =
-      'http://gymsoftwarenepal.com/public/gym?gym_id=af-01';
+  static const String login = 'api/v1/login';
+  static const String paymentHistory = 'api/v1/payment/history';
+  static const String measurementData = 'api/v1/measurements';
+  static const String gymListData = 'http://gymsoftwarenepal.com/public/gym';
 }

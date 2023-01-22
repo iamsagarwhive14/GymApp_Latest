@@ -44,15 +44,6 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: RouteName.splashScreen,
       onGenerateRoute: Routes.generateRoute,
-      // routes: {
-      //   LoginScreen.routeName: (context) => const LoginScreen(),
-      //   HomeScreen.routeName: (context) => const HomeScreen(),
-      //   PaymentHistory.routeName: (context) => const PaymentHistory(),
-      //   MeasurementScreen.routeName: (context) => const MeasurementScreen(),
-      //   Product.routeName: (context) => const Product(),
-      //   Profile.routeName: (context) => const Profile(),
-      //   SplashScreen.routeName: (context) => const SplashScreen(),
-      // },
     );
   }
 }

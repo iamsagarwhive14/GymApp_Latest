@@ -1,15 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:gym_mgmtsystem/screens/login_screen.dart';
-import 'package:gym_mgmtsystem/utilities/routes/routes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../utilities/routes/route_name.dart';
-import '../home_screen.dart';
-import '../home_screen.dart';
-import '../home_screen.dart';
-import '../home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String routeName = 'splash_Screen';
@@ -60,11 +52,16 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void navigateUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    var status = prefs.getString('token');
-    print(status);
-    if (status != null) {
+    var token = prefs.getString('token');
+    var gymId = prefs.getString('gymId');
+
+    if (token != null && gymId != null) {
       Navigator.pushNamed(context, RouteName.homeScreen);
-    } else {
+    }
+    // else if (gymId != null) {
+    //   Navigator.pushNamed(context, RouteName.loginScreen);
+    // }
+    else {
       Navigator.pushNamed(context, RouteName.welcomeScreen);
     }
   }

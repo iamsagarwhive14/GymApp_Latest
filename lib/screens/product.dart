@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_mgmtsystem/screens/welcome/gym_welcome_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../main.dart';
@@ -14,20 +15,23 @@ class Product extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Product'),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.black,
         actions: [
           InkWell(
             onTap: () async {
               SharedPreferences prefs = await SharedPreferences.getInstance();
-              prefs?.clear();
-              Navigator.pushNamed(context, RouteName.loginScreen);
+              prefs?.remove('token');
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => WelcomeScreen()));
             },
             child: Icon(
               Icons.logout,
               size: 24,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 20,
           )
         ],
