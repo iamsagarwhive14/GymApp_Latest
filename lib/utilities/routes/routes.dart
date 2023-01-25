@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gym_mgmtsystem/screens/profile_screen_detail.dart';
 import 'package:gym_mgmtsystem/utilities/routes/route_name.dart';
 
 import '../../screens/home_screen.dart';
@@ -19,6 +20,8 @@ class Routes {
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case RouteName.welcomeScreen:
         return MaterialPageRoute(builder: (_) => const WelcomeScreen());
+      case RouteName.profileScreenDetails:
+        return MaterialPageRoute(builder: (_) => const ProfileScreenDetail());
 
       default:
         return MaterialPageRoute(builder: (_) {

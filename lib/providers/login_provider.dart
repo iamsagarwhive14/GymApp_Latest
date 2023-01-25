@@ -22,10 +22,8 @@ class LoginProvide extends ChangeNotifier {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String gymUrlAPI = sharedPreferences.getString('url') ?? '';
     gymId = sharedPreferences.getString('gymId') ?? '';
-
     var data;
     String urlSet = gymUrlAPI + Constants.login;
-    print('this is login url' + urlSet);
     try {
       Response response = await post(Uri.parse(urlSet), body: {
         'username': email,
@@ -70,13 +68,5 @@ class LoginProvide extends ChangeNotifier {
     await sharedPreferences.setString('username', username);
     await sharedPreferences.setString('profile_picture', profilePicture);
     notifyListeners();
-  }
-
-  Future<String?> getSharePref() async {
-    SharedPreferences _prefs = await SharedPreferences.getInstance();
-    var shareduserName = _prefs.getString('username');
-    userName = shareduserName;
-    notifyListeners();
-    return userName;
   }
 }

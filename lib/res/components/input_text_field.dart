@@ -65,7 +65,7 @@ class InputTextField extends StatelessWidget {
           errorBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.red),
             borderRadius: BorderRadius.all(
-              Radius.circular(8),
+              Radius.circular(30),
             ),
           ),
           enabledBorder: const OutlineInputBorder(

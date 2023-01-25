@@ -25,10 +25,7 @@ class GymListProvider extends ChangeNotifier {
       );
       if (response.statusCode == 200) {
         data = await jsonDecode(response.body.toString());
-        print(data);
         _result = GymListModel.fromJson(data);
-        // print(_result);
-
         if (_result?.response == false) {
           var msg = _result?.msg.toString();
           showSnackBar(msg!, context, color: Colors.red);

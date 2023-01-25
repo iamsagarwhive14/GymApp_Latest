@@ -4,7 +4,7 @@ import 'package:gym_mgmtsystem/screens/login_screen.dart';
 import 'package:gym_mgmtsystem/screens/measurement.dart';
 import 'package:gym_mgmtsystem/screens/payment_history.dart';
 import 'package:gym_mgmtsystem/screens/product.dart';
-import 'package:gym_mgmtsystem/screens/profile.dart';
+import 'package:gym_mgmtsystem/screens/profile_screen_detail.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'home_Screen';
@@ -17,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   List<Widget> screens = [
-    ProfileScreen(),
+    ProfileScreenDetail(),
     PaymentHistory(),
     MeasurementScreen(),
     Product(),
@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(
               Icons.home,
             ),
-            label: 'Home',
+            label: 'Payments',
           ),
           BottomNavigationBarItem(
             icon: Icon(

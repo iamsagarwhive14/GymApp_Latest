@@ -35,8 +35,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> getGymListSharedPreference() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    gymName = sharedPreferences.getString('name') ?? '';
-    gymLogo = sharedPreferences.getString('logo') ?? '';
+    setState(() {
+      gymName = sharedPreferences.getString('name') ?? '';
+      gymLogo = sharedPreferences.getString('logo') ?? '';
+    });
   }
 
   @override
@@ -58,7 +60,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final loginProvide = Provider.of<LoginProvide>(context);
-    final gymNameProvider = Provider.of<GymListProvider>(context);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: Colors.transparent,
@@ -267,26 +268,28 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             onPressed: () async {
-                              setState(() {
-                                _isLoading = true;
-                              });
-                              await loginProvide.login(
-                                  emailController.text.trim(),
-                                  passwordController.text.trim(),
-                                  context);
-                              setState(() {
-                                _isLoading = false;
-                                isTextFieldEnabled = true;
-                              });
+                              if (_formKey.currentState!.validate()) {
+                                setState(() {
+                                  _isLoading = true;
+                                });
+                                await loginProvide.login(
+                                    emailController.text.trim(),
+                                    passwordController.text.trim(),
+                                    context);
+                                setState(() {
+                                  _isLoading = false;
+                                  isTextFieldEnabled = true;
+                                });
 
-                              Usermodel? responseApi = loginProvide.apiResult;
-                              setState(() {
-                                isTextFieldEnabled = true;
-                              });
+                                Usermodel? responseApi = loginProvide.apiResult;
+                                setState(() {
+                                  isTextFieldEnabled = true;
+                                });
 
-                              if (responseApi?.response == true) {
-                                Navigator.pushNamed(
-                                    context, RouteName.homeScreen);
+                                if (responseApi?.response == true) {
+                                  Navigator.pushNamed(
+                                      context, RouteName.homeScreen);
+                                }
                               }
                             },
                             child: _isLoading

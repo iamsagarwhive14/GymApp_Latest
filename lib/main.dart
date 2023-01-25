@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gym_mgmtsystem/providers/check_in_provider.dart';
+import 'package:gym_mgmtsystem/providers/check_out_provider.dart';
 import 'package:gym_mgmtsystem/providers/gym_list_provider.dart';
 import 'package:gym_mgmtsystem/providers/login_provider.dart';
 import 'package:gym_mgmtsystem/providers/measurement_provider.dart';
@@ -25,6 +27,12 @@ void main() async {
       ),
       ChangeNotifierProvider(
         create: (context) => GymListProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => CheckInProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => CheckOutProvider(),
       ),
     ], child: MyApp()),
   );

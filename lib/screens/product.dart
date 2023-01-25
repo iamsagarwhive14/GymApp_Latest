@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gym_mgmtsystem/screens/welcome/gym_welcome_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../helper/logout_alert_dialogue.dart';
 import '../main.dart';
 import '../utilities/routes/route_name.dart';
 import 'login_screen.dart';
@@ -19,12 +20,9 @@ class Product extends StatelessWidget {
         actions: [
           InkWell(
             onTap: () async {
+              LogoutShowDialoge(context);
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs?.remove('token');
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => WelcomeScreen()));
             },
             child: Icon(
               Icons.logout,
