@@ -24,7 +24,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
       userName = sharedPreferences.getString('username') ?? '';
       profilePicture = sharedPreferences.getString('profile_picture') ?? '';
       checkInTime = sharedPreferences.getString('checkInTime') ?? '';
-      checkOutTime = sharedPreferences.getString('checkInTime') ?? '';
+      checkOutTime = sharedPreferences.getString('checkOutTime') ?? '';
     });
   }
 
@@ -48,7 +48,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                     Container(
                       height: MediaQuery.of(context).size.height * 0.35,
                       width: double.infinity,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(50),
                             bottomRight: Radius.circular(50)),
@@ -63,32 +63,32 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                               backgroundColor: Colors.redAccent,
                               radius: 64.0,
                               backgroundImage: NetworkImage(
-                                  profilePicture.toString()
-                                  // sharedProfilePic!,
-                                  // 'https://thumbs.dreamstime.com/b/vector-illustration-avatar-dummy-logo-set-avatar-image-vector-icon-stock-vector-design-avatar-dummy-sign-137159692.jpg',
-                                  ),
+                                profilePicture.toString(),
+                                // sharedProfilePic!,
+                                // 'https://thumbs.dreamstime.com/b/vector-illustration-avatar-dummy-logo-set-avatar-image-vector-icon-stock-vector-design-avatar-dummy-sign-137159692.jpg',
+                              ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           Text(
                             userName.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white),
                           ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
+                          const Text(
                             'Go Gym Fitness',
                             style:
                                 TextStyle(color: Colors.grey, fontSize: 15.0),
                           ),
                         ],
                       ),
+                    ),
+                    const SizedBox(
+                      height: 5,
                     ),
                     Align(
                       alignment: Alignment.bottomCenter,
@@ -125,7 +125,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                   children: [
                                     ElevatedButton(
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.white,
+                                        backgroundColor: Colors.cyanAccent,
                                         shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(10)),
@@ -135,19 +135,27 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                         'checkIn',
                                         style: TextStyle(color: Colors.black),
                                       ),
-                                      onPressed: () async {
-                                        dataProvider.checkInData();
-                                      },
+                                      onPressed: dataProvider.checkInResult
+                                                  ?.result.checkInTime ==
+                                              null
+                                          ? () async {
+                                              dataProvider.checkInData();
+                                            }
+                                          : null,
                                     ),
-                                    Text(
+                                    const Text(
                                       'checkin time: ',
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontSize: 17),
                                     ),
                                     Text(
-                                      checkInTime.toString(),
-                                      style: TextStyle(
+                                      dataProvider.checkInResult?.result
+                                                  .checkInTime !=
+                                              null
+                                          ? checkInTime.toString()
+                                          : '',
+                                      style: const TextStyle(
                                           color: Colors.grey,
                                           fontWeight: FontWeight.normal,
                                           fontSize: 15),
@@ -163,7 +171,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                   children: [
                                     ElevatedButton(
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.white,
+                                        backgroundColor: Colors.cyanAccent,
                                         shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(10)),
@@ -173,9 +181,13 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                         'checkOut',
                                         style: TextStyle(color: Colors.black),
                                       ),
-                                      onPressed: () async {
-                                        dataProvider.checkOutData();
-                                      },
+                                      onPressed: dataProvider.checkOutResult
+                                                  ?.result.checkOutTime ==
+                                              null
+                                          ? () async {
+                                              dataProvider.checkOutData();
+                                            }
+                                          : null,
                                     ),
                                     Text(
                                       'checkout time: ',
@@ -184,7 +196,11 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                           fontSize: 17),
                                     ),
                                     Text(
-                                      checkOutTime.toString(),
+                                      dataProvider.checkOutResult?.result
+                                                  .checkOutTime !=
+                                              null
+                                          ? checkOutTime.toString()
+                                          : '',
                                       style: TextStyle(
                                           color: Colors.grey,
                                           fontWeight: FontWeight.normal,
@@ -419,6 +435,5 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
         ),
       ),
     );
-    ;
   }
 }

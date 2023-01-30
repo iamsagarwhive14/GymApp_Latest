@@ -1,13 +1,13 @@
 import 'Result.dart';
 
-class CheckAttendence {
-  CheckAttendence({
+class CheckAttendenceModel {
+  CheckAttendenceModel({
     required this.response,
     required this.msg,
     required this.result,
   });
 
-  CheckAttendence.fromJson(dynamic json) {
+  CheckAttendenceModel.fromJson(dynamic json) {
     response = json['response'];
     msg = json['msg'];
     result = (json['result'] != null ? Result.fromJson(json['result']) : null)!;

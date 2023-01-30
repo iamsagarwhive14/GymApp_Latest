@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gym_mgmtsystem/screens/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../screens/login_screen.dart';
 import '../screens/welcome/gym_welcome_screen.dart';
 
 LogoutShowDialoge(BuildContext context) {

@@ -4,20 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:gym_mgmtsystem/model/check/CheckInModel.dart';
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../model/checkattendence/CheckAttendence.dart';
 import '../utilities/constant.dart';
 
-class CheckInProvider extends ChangeNotifier {
-  CheckInModel? _checkInResult;
-  CheckInModel? get checkInResult => _checkInResult;
+class CheckAttendenceProvider extends ChangeNotifier {
+  CheckAttendenceModel? _checkAttendence;
+  CheckAttendenceModel? get checkAttendence => _checkAttendence;
 
-  Future<CheckInModel?> checkInData() async {
+  Future<CheckAttendenceModel?> checkAttendenceData() async {
     var data;
     SharedPreferences _prefs = await SharedPreferences.getInstance();
 
     var apiToken = _prefs.getString('token');
     String gymUrlAPI = _prefs.getString('url') ?? '';
 
-    String urlSet = gymUrlAPI + Constants.checkIn;
+    String urlSet = gymUrlAPI + Constants.checkAttendence;
 
     try {
       final response = await post(
@@ -32,13 +33,13 @@ class CheckInProvider extends ChangeNotifier {
       );
       if (response.statusCode == 200) {
         data = await jsonDecode(response.body.toString());
-        _checkInResult = CheckInModel.fromJson(data);
+        _checkAttendence = CheckAttendenceModel.fromJson(data);
         var responseJson = jsonDecode(response.body);
         notifyListeners();
         setCheckInTimeSharedPreference(
           data['result']['check_in_time'],
         );
-        return CheckInModel.fromJson(responseJson);
+        return CheckAttendenceModel.fromJson(responseJson);
       } else {
         print('data is not available');
         print('data  is not created ' + response.statusCode.toString());

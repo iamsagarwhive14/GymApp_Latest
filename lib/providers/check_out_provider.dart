@@ -8,6 +8,8 @@ import '../model/checkoutmodel/CheckOutModel.dart';
 import '../utilities/constant.dart';
 
 class CheckOutProvider extends ChangeNotifier {
+  CheckOutModel? _checkOutResult;
+  CheckOutModel? get checkOutResult => _checkOutResult;
   Future<CheckOutModel?> checkOutData() async {
     var data;
     SharedPreferences _prefs = await SharedPreferences.getInstance();
@@ -30,10 +32,9 @@ class CheckOutProvider extends ChangeNotifier {
       );
       if (response.statusCode == 200) {
         data = await jsonDecode(response.body.toString());
-        print(response.statusCode);
+        _checkOutResult = CheckOutModel.fromJson(data);
         var responseJson = jsonDecode(response.body);
         notifyListeners();
-        print(responseJson);
         setCheckOutTimeSharedPreference(
           data['result']['check_out_time'],
         );
@@ -50,7 +51,7 @@ class CheckOutProvider extends ChangeNotifier {
 
   void setCheckOutTimeSharedPreference(String checkOutTime) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    await sharedPreferences.setString('checkInTime', checkOutTime);
+    await sharedPreferences.setString('checkOutTime', checkOutTime);
     print(checkOutTime);
     notifyListeners();
   }

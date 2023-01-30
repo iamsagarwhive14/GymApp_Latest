@@ -26,8 +26,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Future<void> getGymDetailSharedPreference() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     setState(() {
-      gymName = sharedPreferences.getString('username') ?? '';
-      gymLogo = sharedPreferences.getString('profile_picture') ?? '';
+      gymName = sharedPreferences.getString('name') ?? '';
+      gymLogo = sharedPreferences.getString('logo') ?? '';
     });
   }
 

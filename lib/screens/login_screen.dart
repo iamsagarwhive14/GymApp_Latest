@@ -1,13 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:gym_mgmtsystem/main.dart';
 import 'package:gym_mgmtsystem/model/user_model.dart';
-import 'package:gym_mgmtsystem/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../providers/gym_list_provider.dart';
 import '../providers/login_provider.dart';
 import '../res/components/input_text_field.dart';
 import '../utilities/routes/route_name.dart';
