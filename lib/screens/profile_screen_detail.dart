@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../providers/check_in_provider.dart';
+import '../providers/login_provider.dart';
 
 class ProfileScreenDetail extends StatefulWidget {
   const ProfileScreenDetail({Key? key}) : super(key: key);
@@ -17,6 +18,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
   String profilePicture = '';
   String checkInTime = '';
   String checkOutTime = '';
+  String token = '';
 
   Future<void> getPersonDetailSharedPreference() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -25,6 +27,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
       profilePicture = sharedPreferences.getString('profile_picture') ?? '';
       checkInTime = sharedPreferences.getString('checkInTime') ?? '';
       checkOutTime = sharedPreferences.getString('checkOutTime') ?? '';
+      token = sharedPreferences.getString('token') ?? '';
     });
   }
 
@@ -36,6 +39,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
 
   @override
   Widget build(BuildContext context) {
+    final loginProvide = Provider.of<LoginProvide>(context);
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -57,28 +61,36 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                       child: Column(
                         children: [
                           CircleAvatar(
-                            backgroundColor: Colors.white,
-                            radius: 70.0,
-                            child: CircleAvatar(
-                              backgroundColor: Colors.redAccent,
-                              radius: 64.0,
-                              backgroundImage: NetworkImage(
-                                profilePicture.toString(),
-                                // sharedProfilePic!,
-                                // 'https://thumbs.dreamstime.com/b/vector-illustration-avatar-dummy-logo-set-avatar-image-vector-icon-stock-vector-design-avatar-dummy-sign-137159692.jpg',
-                              ),
-                            ),
-                          ),
+                              backgroundColor: Colors.white,
+                              radius: 70.0,
+                              child: FutureBuilder(
+                                future: loginProvide.checkPrefsForUserProfile(),
+                                builder: (context, snapshot) {
+                                  return CircleAvatar(
+                                    backgroundColor: Colors.redAccent,
+                                    radius: 64.0,
+                                    backgroundImage: NetworkImage(
+                                        loginProvide.profilePicture ?? ''
+                                        // sharedProfilePic!,
+                                        // 'https://thumbs.dreamstime.com/b/vector-illustration-avatar-dummy-logo-set-avatar-image-vector-icon-stock-vector-design-avatar-dummy-sign-137159692.jpg',
+                                        ),
+                                  );
+                                },
+                              )),
                           const SizedBox(
                             height: 5,
                           ),
-                          Text(
-                            userName.toString(),
-                            style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
-                          ),
+                          FutureBuilder(
+                              future: loginProvide.checkPrefsForUserName(),
+                              builder: (context, snapshot) {
+                                return Text(
+                                  loginProvide.userName ?? '',
+                                  style: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                );
+                              }),
                           const Text(
                             'Go Gym Fitness',
                             style:
@@ -94,8 +106,6 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                       alignment: Alignment.bottomCenter,
                       child: Container(
                         height: MediaQuery.of(context).size.height * 0.17,
-                        // margin: EdgeInsets.only(right: 20, left: 20, bottom: 10),
-                        // padding: EdgeInsets.only(right: 10, left: 10),
                         margin: const EdgeInsets.all(4),
                         padding: const EdgeInsets.all(4),
                         decoration: BoxDecoration(
@@ -139,7 +149,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                                   ?.result.checkInTime ==
                                               null
                                           ? () async {
-                                              dataProvider.checkInData();
+                                              await dataProvider.checkInData();
                                             }
                                           : null,
                                     ),

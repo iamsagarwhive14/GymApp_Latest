@@ -20,7 +20,7 @@ class Product extends StatelessWidget {
         actions: [
           InkWell(
             onTap: () async {
-              LogoutShowDialoge(context);
+              await LogoutShowDialoge(context);
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs?.remove('token');
             },

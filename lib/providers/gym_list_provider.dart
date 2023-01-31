@@ -12,7 +12,6 @@ import '../model/gymmodel/GymListModel.dart';
 class GymListProvider extends ChangeNotifier {
   GymListModel? _result;
   GymListModel? get apiResult => _result;
-
   Future<GymListModel?> GymListData(String gymId, context) async {
     var data;
     try {
@@ -28,6 +27,7 @@ class GymListProvider extends ChangeNotifier {
         _result = GymListModel.fromJson(data);
         if (_result?.response == false) {
           var msg = _result?.msg.toString();
+          print(_result?.response);
           showSnackBar(msg!, context, color: Colors.red);
           notifyListeners();
         }
@@ -38,7 +38,7 @@ class GymListProvider extends ChangeNotifier {
           data['result']['url'],
           data['result']['gym_id'],
         );
-
+        notifyListeners();
         return GymListModel.fromJson(data);
       } else {}
     } catch (e) {
@@ -53,7 +53,6 @@ class GymListProvider extends ChangeNotifier {
     await sharedPreferences.setString('logo', logo);
     await sharedPreferences.setString('url', url);
     await sharedPreferences.setString('gymId', gymId);
-    print("url" + url);
     notifyListeners();
   }
 }

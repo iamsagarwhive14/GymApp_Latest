@@ -9,9 +9,11 @@ import '../utilities/routes/route_name.dart';
 
 SubmitshowDialoge(BuildContext context, String gymName, String gymLogo) async {
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  //
   var gymName = sharedPreferences.getString('name') ?? '';
   var gymLogo = sharedPreferences.getString('logo') ?? '';
-  showDialog(
+
+  await showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
@@ -24,10 +26,10 @@ SubmitshowDialoge(BuildContext context, String gymName, String gymLogo) async {
           Consumer<GymListProvider>(
             builder: (context, dataProvider, child) {
               return TextButton(
-                onPressed: () {
+                onPressed: () async {
                   GymListModel? responseApi = dataProvider.apiResult;
                   if (responseApi?.response == true) {
-                    Navigator.pushNamed(context, RouteName.loginScreen);
+                    await Navigator.pushNamed(context, RouteName.loginScreen);
                   }
                 },
                 child: Text(

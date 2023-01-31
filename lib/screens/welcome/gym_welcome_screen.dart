@@ -2,12 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gym_mgmtsystem/providers/gym_list_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../helper/logout_alert_dialogue.dart';
-import '../../helper/show_snackbar.dart';
 import '../../helper/submit_alert_dialogue.dart';
 import '../../model/gymmodel/GymListModel.dart';
-import '../../utilities/routes/route_name.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -160,12 +156,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                 GymListModel? responseApi =
                                     dataProvider.apiResult;
                                 if (responseApi?.response == true) {
-                                  SubmitshowDialoge(context, gymName, gymLogo);
+                                  await SubmitshowDialoge(
+                                      context, gymName, gymLogo);
                                 } else if (responseApi?.response == false) {
-                                  var msg = responseApi!.msg.toString();
-                                  print(responseApi!.msg.toString());
-                                  showSnackBar(msg!, context,
-                                      color: Colors.red);
+                                  // print('this is sles part');
+                                  // var msg = responseApi!.msg.toString();
+                                  // print('messages gym:${responseApi!.msg}');
+                                  // await showSnackBar(msg!, context,
+                                  //     color: Colors.red);
                                 }
                               }
                             },

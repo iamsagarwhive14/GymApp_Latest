@@ -14,7 +14,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 late SharedPreferences sp;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  sp = await SharedPreferences.getInstance();
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(

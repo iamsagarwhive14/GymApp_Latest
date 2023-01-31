@@ -11,11 +11,9 @@ import '../utilities/constant.dart';
 class LoginProvide extends ChangeNotifier {
   String gymUrl = '';
   String gymId = '';
-
-  Future<void> getGymListSharedPreference() async {}
-
   Usermodel? _result;
   String? userName;
+  String? profilePicture;
   Usermodel? get apiResult => _result;
 
   Future<Object?> login(String email, password, context) async {
@@ -35,6 +33,7 @@ class LoginProvide extends ChangeNotifier {
 
         if (_result?.response == false) {
           var msg = _result?.msg.toString();
+
           showSnackBar(msg!, context, color: Colors.red);
           notifyListeners();
         }
@@ -68,5 +67,22 @@ class LoginProvide extends ChangeNotifier {
     await sharedPreferences.setString('username', username);
     await sharedPreferences.setString('profile_picture', profilePicture);
     notifyListeners();
+  }
+
+  Future<String?> checkPrefsForUserName() async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    var shareduserName = _prefs.getString('username');
+    var sharedProfilePic = _prefs.getString('profile_picture');
+    userName = shareduserName;
+    notifyListeners();
+    return userName;
+  }
+
+  Future<String?> checkPrefsForUserProfile() async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    var sharedProfilePic = _prefs.getString('profile_picture');
+    profilePicture = sharedProfilePic;
+    notifyListeners();
+    return profilePicture;
   }
 }
