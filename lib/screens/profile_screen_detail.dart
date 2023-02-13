@@ -60,6 +60,9 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                       ),
                       child: Column(
                         children: [
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.01,
+                          ),
                           CircleAvatar(
                               backgroundColor: Colors.white,
                               radius: 70.0,
@@ -100,7 +103,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                       ),
                     ),
                     const SizedBox(
-                      height: 5,
+                      height: 10,
                     ),
                     Align(
                       alignment: Alignment.bottomCenter,
@@ -109,122 +112,123 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                         margin: const EdgeInsets.all(4),
                         padding: const EdgeInsets.all(4),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
+                          borderRadius: BorderRadius.circular(15),
                           color: Colors.white,
                         ),
-                        child: Card(
-                          elevation: 20.0,
-                          color: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Image(
-                                image: AssetImage(
-                                  'assets/images/noun_Walk_1826969.png',
-                                ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: 5.0,
+                            ),
+                            const Image(
+                              image: AssetImage(
+                                'assets/images/noun_Walk_1826969.png',
                               ),
-                              Consumer<CheckInProvider>(
-                                  builder: (context, dataProvider, child) {
-                                return Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.cyanAccent,
-                                        shape: const RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(10)),
-                                        ),
+                            ),
+                            Consumer<CheckInProvider>(
+                                builder: (context, dataProvider, child) {
+                              return Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.cyanAccent,
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10)),
                                       ),
-                                      child: Text(
-                                        'checkIn',
-                                        style: TextStyle(color: Colors.black),
+                                    ),
+                                    child: Text(
+                                      'checkIn',
+                                      style: TextStyle(color: Colors.black),
+                                    ),
+                                    onPressed: dataProvider.checkInResult
+                                                ?.result.checkInTime ==
+                                            null
+                                        ? () async {
+                                            await dataProvider.checkInData();
+                                          }
+                                        : null,
+                                  ),
+                                  const Text(
+                                    'checkIn: ',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16),
+                                  ),
+                                  Text(
+                                    dataProvider.checkInResult?.result
+                                                .checkInTime !=
+                                            null
+                                        ? checkInTime.toString()
+                                        : 'your time ',
+                                    style: const TextStyle(
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 15),
+                                  ),
+                                ],
+                              );
+                            }),
+                            Consumer<CheckOutProvider>(
+                                builder: (context, dataProvider, child) {
+                              return Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.cyanAccent,
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10)),
                                       ),
-                                      onPressed: dataProvider.checkInResult
-                                                  ?.result.checkInTime ==
-                                              null
-                                          ? () async {
-                                              await dataProvider.checkInData();
-                                            }
-                                          : null,
                                     ),
-                                    const Text(
-                                      'checkin time: ',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 17),
+                                    child: Text(
+                                      'checkOut',
+                                      style: TextStyle(color: Colors.black),
                                     ),
-                                    Text(
-                                      dataProvider.checkInResult?.result
-                                                  .checkInTime !=
-                                              null
-                                          ? checkInTime.toString()
-                                          : 'your time ',
-                                      style: const TextStyle(
-                                          color: Colors.grey,
-                                          fontWeight: FontWeight.normal,
-                                          fontSize: 15),
+                                    onPressed: dataProvider.checkOutResult
+                                                ?.result.checkOutTime ==
+                                            null
+                                        ? () async {
+                                            await dataProvider.checkOutData();
+                                          }
+                                        : null,
+                                  ),
+                                  Text(
+                                    'checkOut: ',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
                                     ),
-                                  ],
-                                );
-                              }),
-                              Consumer<CheckOutProvider>(
-                                  builder: (context, dataProvider, child) {
-                                return Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.cyanAccent,
-                                        shape: const RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(10)),
-                                        ),
-                                      ),
-                                      child: Text(
-                                        'checkOut',
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                      onPressed: dataProvider.checkOutResult
-                                                  ?.result.checkOutTime ==
-                                              null
-                                          ? () async {
-                                              await dataProvider.checkOutData();
-                                            }
-                                          : null,
-                                    ),
-                                    Text(
-                                      'checkout time: ',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 17),
-                                    ),
-                                    Text(
-                                      dataProvider.checkOutResult?.result
-                                                  .checkOutTime !=
-                                              null
-                                          ? checkOutTime.toString()
-                                          : 'your time',
-                                      style: TextStyle(
-                                          color: Colors.grey,
-                                          fontWeight: FontWeight.normal,
-                                          fontSize: 15),
-                                    ),
-                                  ],
-                                );
-                              }),
-                              Image(
-                                image:
-                                    AssetImage('assets/images/Group 466.png'),
-                              )
-                            ],
-                          ),
+                                  ),
+                                  Text(
+                                    dataProvider.checkOutResult?.result
+                                                .checkOutTime !=
+                                            null
+                                        ? checkOutTime.toString()
+                                        : 'your time',
+                                    style: TextStyle(
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 15),
+                                  ),
+                                ],
+                              );
+                            }),
+                            Image(
+                              image: AssetImage('assets/images/Group 466.png'),
+                            ),
+                            SizedBox(
+                              width: 5.0,
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -238,16 +242,19 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                 margin: const EdgeInsets.all(4),
                 padding: const EdgeInsets.all(4),
                 child: Card(
-                  elevation: 20.0,
+                  elevation: 5.0,
                   color: Colors.white,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(
                     children: [
-                      const Image(
-                        image: AssetImage(
-                            'assets/images/noun_calories_1180285.png'),
+                      Container(
+                        margin: const EdgeInsets.only(left: 10),
+                        child: const Image(
+                          image: AssetImage(
+                              'assets/images/noun_calories_1180285.png'),
+                        ),
                       ),
                       const SizedBox(
                         width: 18.0,
@@ -255,13 +262,24 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
-                              'Active Subscription',
-                              style: TextStyle(
-                                color: Colors.cyanAccent,
-                                fontWeight: FontWeight.w900,
-                                fontSize: 20.0,
+                          children: [
+                            Container(
+                              width: 100,
+                              margin: EdgeInsets.only(top: 5),
+                              padding: EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                color: Colors.cyanAccent.withOpacity(0.2),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Active',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 15.0,
+                                  ),
+                                ),
                               ),
                             ),
                             SizedBox(
@@ -276,7 +294,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                               ),
                             ),
                             SizedBox(
-                              height: 5.0,
+                              height: 10.0,
                             ),
                             Text(
                               'Start Date:2022/02/04 ',
@@ -287,7 +305,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                               ),
                             ),
                             SizedBox(
-                              height: 5.0,
+                              height: 10.0,
                             ),
                             Text(
                               'End Date:2022/02/04 ',
@@ -296,6 +314,9 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                 fontSize: 13.0,
                                 fontWeight: FontWeight.w700,
                               ),
+                            ),
+                            SizedBox(
+                              height: 5.0,
                             ),
                           ],
                         ),
@@ -308,29 +329,43 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                 margin: const EdgeInsets.all(8),
                 padding: const EdgeInsets.all(8),
                 child: Card(
-                  elevation: 20.0,
+                  elevation: 5.0,
                   color: Colors.white,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(
                     children: [
-                      const Image(
-                        image: AssetImage(
-                            'assets/images/noun_calories_1180285.png'),
+                      Container(
+                        margin: const EdgeInsets.only(left: 10),
+                        child: const Image(
+                          image: AssetImage(
+                              'assets/images/noun_calories_1180285.png'),
+                        ),
                       ),
                       const SizedBox(
                         width: 18.0,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            'Active Subscription',
-                            style: TextStyle(
-                              color: Colors.cyanAccent,
-                              fontWeight: FontWeight.w900,
-                              fontSize: 20.0,
+                        children: [
+                          Container(
+                            width: 100,
+                            margin: EdgeInsets.only(top: 5),
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: Colors.cyanAccent.withOpacity(0.2),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Active',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15.0,
+                                ),
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -345,7 +380,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                             ),
                           ),
                           SizedBox(
-                            height: 5.0,
+                            height: 10.0,
                           ),
                           Text(
                             'Start Date:2022/02/04 ',
@@ -356,7 +391,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                             ),
                           ),
                           SizedBox(
-                            height: 5.0,
+                            height: 10.0,
                           ),
                           Text(
                             'End Date:2022/02/04 ',
@@ -365,6 +400,9 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                               fontSize: 13.0,
                               fontWeight: FontWeight.w700,
                             ),
+                          ),
+                          SizedBox(
+                            height: 5.0,
                           ),
                         ],
                       )
@@ -376,29 +414,43 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                 margin: const EdgeInsets.all(8),
                 padding: const EdgeInsets.all(8),
                 child: Card(
-                  elevation: 20.0,
+                  elevation: 5.0,
                   color: Colors.white,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(
                     children: [
-                      const Image(
-                        image: AssetImage(
-                            'assets/images/noun_calories_1180285.png'),
+                      Container(
+                        margin: const EdgeInsets.only(left: 10),
+                        child: const Image(
+                          image: AssetImage(
+                              'assets/images/noun_calories_1180285.png'),
+                        ),
                       ),
                       const SizedBox(
                         width: 18.0,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            'Active Subscription',
-                            style: TextStyle(
-                              color: Colors.cyanAccent,
-                              fontWeight: FontWeight.w900,
-                              fontSize: 20.0,
+                        children: [
+                          Container(
+                            width: 100,
+                            margin: EdgeInsets.only(top: 5),
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: Colors.cyanAccent.withOpacity(0.2),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Active',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 15.0,
+                                ),
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -413,7 +465,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                             ),
                           ),
                           SizedBox(
-                            height: 5.0,
+                            height: 10.0,
                           ),
                           Text(
                             'Start Date:2022/02/04 ',
@@ -424,7 +476,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                             ),
                           ),
                           SizedBox(
-                            height: 5.0,
+                            height: 10.0,
                           ),
                           Text(
                             'End Date:2022/02/04 ',
@@ -433,6 +485,9 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                               fontSize: 13.0,
                               fontWeight: FontWeight.w700,
                             ),
+                          ),
+                          SizedBox(
+                            height: 10.0,
                           ),
                         ],
                       )
