@@ -40,7 +40,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           backgroundColor: Colors.white,
           resizeToAvoidBottomInset: true,
           appBar: AppBar(
-            title: Text('Welcome Gymers '),
+            title: const Text('Welcome Gymers '),
             centerTitle: true,
           ),
           body: Consumer<GymListProvider>(
@@ -58,30 +58,30 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 40,
                         ),
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Container(
-                            padding: EdgeInsets.only(left: 15),
-                            child: Text(
+                            padding: const EdgeInsets.only(left: 15),
+                            child: const Text(
                               'Please provide your Gym id :',
                               style: TextStyle(
                                   fontSize: 25, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Form(
                           key: _formKey,
                           child: Container(
-                            padding: EdgeInsets.only(left: 10, right: 10),
+                            padding: const EdgeInsets.only(left: 10, right: 10),
                             child: TextFormField(
                               controller: idController,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 hintText: 'Enter your Gym id',
                                 contentPadding: EdgeInsets.all(17),
                                 border: OutlineInputBorder(
@@ -111,8 +111,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Container(
-                            padding: EdgeInsets.only(left: 15),
-                            child: Text(
+                            padding: const EdgeInsets.only(left: 15),
+                            child: const Text(
                               'Get your Gym Id from your concerned Gym',
                               style: TextStyle(
                                   fontSize: 15,
@@ -138,7 +138,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                               ),
                             ),
                             child: _isLoading
-                                ? Center(
+                                ? const Center(
                                     child: CircularProgressIndicator(
                                     color: Colors.white,
                                   ))
@@ -148,6 +148,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                 setState(() {
                                   _isLoading = true;
                                 });
+
                                 await dataProvider?.GymListData(
                                     idController.text, context);
                                 setState(() {
@@ -156,7 +157,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                 GymListModel? responseApi =
                                     dataProvider.apiResult;
                                 if (responseApi?.response == true) {
-                                  await SubmitshowDialoge(
+                                  await submitShowDialogue(
                                       context, gymName, gymLogo);
                                 } else if (responseApi?.response == false) {
                                   // print('this is sles part');

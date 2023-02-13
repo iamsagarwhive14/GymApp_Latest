@@ -6,6 +6,8 @@ import 'package:gym_mgmtsystem/providers/gym_list_provider.dart';
 import 'package:gym_mgmtsystem/providers/login_provider.dart';
 import 'package:gym_mgmtsystem/providers/measurement_provider.dart';
 import 'package:gym_mgmtsystem/providers/payment_provider.dart';
+import 'package:gym_mgmtsystem/providers/product_provider.dart';
+import 'package:gym_mgmtsystem/screens/product/product_details.dart';
 import 'package:gym_mgmtsystem/utilities/routes/route_name.dart';
 import 'package:gym_mgmtsystem/utilities/routes/routes.dart';
 import 'package:provider/provider.dart';
@@ -38,6 +40,9 @@ void main() async {
       ChangeNotifierProvider(
         create: (context) => CheckAttendenceProvider(),
       ),
+      ChangeNotifierProvider(
+        create: (context) => ProductProvider(),
+      ),
     ], child: MyApp()),
   );
 }
@@ -54,6 +59,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      // home: ProductDetail(),
       initialRoute: RouteName.splashScreen,
       onGenerateRoute: Routes.generateRoute,
     );

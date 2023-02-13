@@ -3,7 +3,7 @@ import 'package:gym_mgmtsystem/main.dart';
 import 'package:gym_mgmtsystem/screens/login_screen.dart';
 import 'package:gym_mgmtsystem/screens/measurement.dart';
 import 'package:gym_mgmtsystem/screens/payment_history.dart';
-import 'package:gym_mgmtsystem/screens/product.dart';
+import 'package:gym_mgmtsystem/screens/product_screen.dart';
 import 'package:gym_mgmtsystem/screens/profile_screen_detail.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ProfileScreenDetail(),
     PaymentHistory(),
     MeasurementScreen(),
-    Product(),
+    ProductScreen(),
   ];
   @override
   Widget build(BuildContext context) {

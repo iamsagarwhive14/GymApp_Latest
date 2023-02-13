@@ -1,12 +1,9 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_mgmtsystem/utilities/constant.dart';
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../helper/show_snackbar.dart';
 import '../model/gymmodel/GymListModel.dart';
 
 class GymListProvider extends ChangeNotifier {
@@ -28,10 +25,9 @@ class GymListProvider extends ChangeNotifier {
         if (_result?.response == false) {
           var msg = _result?.msg.toString();
           print(_result?.response);
-          showSnackBar(msg!, context, color: Colors.red);
+          // showSnackBar(msg!, context, color: Colors.red);
           notifyListeners();
         }
-
         setGymListSharedPreference(
           data['result']['name'],
           data['result']['logo'],
@@ -49,10 +45,10 @@ class GymListProvider extends ChangeNotifier {
   void setGymListSharedPreference(
       String name, String logo, String url, String gymId) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    await sharedPreferences.setString('name', name);
-    await sharedPreferences.setString('logo', logo);
-    await sharedPreferences.setString('url', url);
-    await sharedPreferences.setString('gymId', gymId);
+    await sharedPreferences.setString('name', name.toString());
+    await sharedPreferences.setString('logo', logo.toString());
+    await sharedPreferences.setString('url', url.toString());
+    await sharedPreferences.setString('gymId', gymId.toString());
     notifyListeners();
   }
 }

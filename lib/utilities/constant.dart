@@ -6,4 +6,5 @@ class Constants {
   static const String checkAttendence = 'api/v1/attandance/check_attandance';
   static const String measurementData = 'api/v1/measurements';
   static const String gymListData = 'http://gymsoftwarenepal.com/public/gym';
+  static const String productData = 'https://gymsoftwarenepal.com/products';
 }

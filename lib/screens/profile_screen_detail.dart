@@ -20,6 +20,12 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
   String checkOutTime = '';
   String token = '';
 
+  @override
+  void initState() {
+    super.initState();
+    getPersonDetailSharedPreference();
+  }
+
   Future<void> getPersonDetailSharedPreference() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     setState(() {
@@ -29,12 +35,6 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
       checkOutTime = sharedPreferences.getString('checkOutTime') ?? '';
       token = sharedPreferences.getString('token') ?? '';
     });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getPersonDetailSharedPreference();
   }
 
   @override
@@ -122,7 +122,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Image(
+                              const Image(
                                 image: AssetImage(
                                   'assets/images/noun_Walk_1826969.png',
                                 ),
@@ -164,7 +164,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                                   .checkInTime !=
                                               null
                                           ? checkInTime.toString()
-                                          : '',
+                                          : 'your time ',
                                       style: const TextStyle(
                                           color: Colors.grey,
                                           fontWeight: FontWeight.normal,
@@ -195,7 +195,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                                   ?.result.checkOutTime ==
                                               null
                                           ? () async {
-                                              dataProvider.checkOutData();
+                                              await dataProvider.checkOutData();
                                             }
                                           : null,
                                     ),
@@ -210,7 +210,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                                   .checkOutTime !=
                                               null
                                           ? checkOutTime.toString()
-                                          : '',
+                                          : 'your time',
                                       style: TextStyle(
                                           color: Colors.grey,
                                           fontWeight: FontWeight.normal,

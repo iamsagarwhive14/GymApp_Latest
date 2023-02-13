@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gym_mgmtsystem/model/measurement/Measurement_model.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../helper/logout_alert_dialogue.dart';
 import '../providers/measurement_provider.dart';
 
 class MeasurementScreen extends StatelessWidget {
@@ -11,7 +13,28 @@ class MeasurementScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Measurement'), backgroundColor: Colors.black),
+      appBar: AppBar(
+        title: Text(
+          'Measurement',
+        ),
+        backgroundColor: Colors.black,
+        actions: [
+          InkWell(
+            onTap: () async {
+              await LogoutShowDialoge(context);
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              prefs?.remove('token');
+            },
+            child: Icon(
+              Icons.logout,
+              size: 24,
+            ),
+          ),
+          const SizedBox(
+            width: 20,
+          )
+        ],
+      ),
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
