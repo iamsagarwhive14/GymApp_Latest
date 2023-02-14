@@ -1,10 +1,10 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:gym_mgmtsystem/model/PaymentHistory.dart';
 import 'package:gym_mgmtsystem/providers/payment_provider.dart';
 import 'package:gym_mgmtsystem/screens/details_screen.dart';
 import 'package:provider/provider.dart';
+
+import '../services/shimmer/shimmereffect.dart';
 
 class PaymentHistory extends StatefulWidget {
   const PaymentHistory({Key? key}) : super(key: key);
@@ -232,11 +232,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                       ),
                     );
                   } else {
-                    return const Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.lightBlueAccent,
-                      ),
-                    );
+                    return ShimmerEffect();
                   }
                 },
               );

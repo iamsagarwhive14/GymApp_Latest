@@ -7,12 +7,13 @@ class DetailsScreen extends StatefulWidget {
   final String paymentDate;
   final String paymentAmount;
   final String paymentMode;
-  const DetailsScreen(
-      {required this.subscription,
-      required this.fiscalYear,
-      required this.paymentDate,
-      required this.paymentAmount,
-      required this.paymentMode});
+  const DetailsScreen({
+    required this.subscription,
+    required this.fiscalYear,
+    required this.paymentDate,
+    required this.paymentAmount,
+    required this.paymentMode,
+  });
 
   @override
   State<DetailsScreen> createState() => _DetailsScreenState();

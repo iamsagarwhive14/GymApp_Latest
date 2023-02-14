@@ -4,6 +4,8 @@ import 'package:gym_mgmtsystem/providers/product_provider.dart';
 import 'package:gym_mgmtsystem/screens/product/product_details.dart';
 import 'package:provider/provider.dart';
 
+import '../services/shimmer/shimmereffectproduct.dart';
+
 class ProductScreen extends StatefulWidget {
   static const String routeName = 'product_screen';
   const ProductScreen({Key? key}) : super(key: key);
@@ -264,11 +266,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                   );
                                 });
                           } else {
-                            return const Center(
-                              child: CircularProgressIndicator(
-                                color: Colors.lightBlueAccent,
-                              ),
-                            );
+                            return ShimmerEffectProduct();
                           }
                         });
                   },

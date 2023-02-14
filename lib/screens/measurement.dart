@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:gym_mgmtsystem/model/measurement/Measurement_model.dart';
+import 'package:gym_mgmtsystem/services/shimmer/shimmereffect.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../helper/logout_alert_dialogue.dart';
 import '../providers/measurement_provider.dart';
+import '../services/shimmer/shimmereffectmeasurement.dart';
 
 class MeasurementScreen extends StatelessWidget {
   static const String routeName = 'measurement_screen';
-  const MeasurementScreen({Key? key}) : super(key: key);
+  final String id;
+  const MeasurementScreen({Key? key, required this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Measurement',
+          'measurement',
         ),
         backgroundColor: Colors.black,
         actions: [
@@ -465,11 +468,7 @@ class MeasurementScreen extends StatelessWidget {
                     ),
                   );
                 } else {
-                  return const Center(
-                    child: CircularProgressIndicator(
-                      color: Colors.lightBlueAccent,
-                    ),
-                  );
+                  return ShimmerEffectMeasurement();
                 }
               },
             );

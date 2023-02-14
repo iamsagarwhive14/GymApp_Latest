@@ -50,7 +50,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                 child: Stack(
                   children: [
                     Container(
-                      height: MediaQuery.of(context).size.height * 0.35,
+                      height: MediaQuery.of(context).size.height * 0.34,
                       width: double.infinity,
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
@@ -240,7 +240,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
               ),
               Container(
                 margin: const EdgeInsets.all(4),
-                padding: const EdgeInsets.all(4),
+                padding: const EdgeInsets.all(8),
                 child: Card(
                   elevation: 5.0,
                   color: Colors.white,
@@ -326,7 +326,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.all(8),
+                margin: const EdgeInsets.all(4),
                 padding: const EdgeInsets.all(8),
                 child: Card(
                   elevation: 5.0,
@@ -411,7 +411,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.all(8),
+                margin: const EdgeInsets.all(4),
                 padding: const EdgeInsets.all(8),
                 child: Card(
                   elevation: 5.0,

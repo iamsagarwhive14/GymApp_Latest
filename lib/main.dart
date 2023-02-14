@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_mgmtsystem/providers/check_attendence_provider.dart';
 import 'package:gym_mgmtsystem/providers/check_in_provider.dart';
@@ -7,7 +8,11 @@ import 'package:gym_mgmtsystem/providers/login_provider.dart';
 import 'package:gym_mgmtsystem/providers/measurement_provider.dart';
 import 'package:gym_mgmtsystem/providers/payment_provider.dart';
 import 'package:gym_mgmtsystem/providers/product_provider.dart';
-import 'package:gym_mgmtsystem/screens/product/product_details.dart';
+import 'package:gym_mgmtsystem/services/local_notification_service.dart';
+import 'package:gym_mgmtsystem/services/notification_services.dart';
+import 'package:gym_mgmtsystem/services/shimmer/shimmereffect.dart';
+import 'package:gym_mgmtsystem/services/shimmer/shimmereffectmeasurement.dart';
+import 'package:gym_mgmtsystem/services/shimmer/shimmereffectproduct.dart';
 import 'package:gym_mgmtsystem/utilities/routes/route_name.dart';
 import 'package:gym_mgmtsystem/utilities/routes/routes.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +22,9 @@ late SharedPreferences sp;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  await Firebase.initializeApp();
+  NotificationService.initialize();
+  LocalNotificationService.initialize();
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(
@@ -59,7 +67,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: ProductDetail(),
+      // home: ShimmerEffectProduct(),
       initialRoute: RouteName.splashScreen,
       onGenerateRoute: Routes.generateRoute,
     );
