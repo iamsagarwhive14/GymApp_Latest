@@ -255,8 +255,8 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                             borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: AssetImage(
-                                    'assets/images/imagesjohny.jpg'))),
+                                image:
+                                    AssetImage('assets/images/unnamed.png'))),
                         margin: const EdgeInsets.all(10),
                       ),
                       const SizedBox(
@@ -345,8 +345,8 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                             borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: AssetImage(
-                                    'assets/images/imagesjohny.jpg'))),
+                                image:
+                                    AssetImage('assets/images/unnamed.png'))),
                         margin: const EdgeInsets.all(10),
                         // child: const Image(
                         //   fit: BoxFit.cover,
@@ -437,8 +437,8 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                             borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: AssetImage(
-                                    'assets/images/imagesjohny.jpg'))),
+                                image:
+                                    AssetImage('assets/images/unnamed.png'))),
                         margin: const EdgeInsets.all(10),
                       ),
                       const SizedBox(
