@@ -236,10 +236,9 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: 5,
               ),
               Container(
-                margin: const EdgeInsets.all(4),
                 padding: const EdgeInsets.all(8),
                 child: Card(
                   elevation: 5.0,
@@ -250,14 +249,18 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                   child: Row(
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(left: 10),
-                        child: const Image(
-                          image: AssetImage(
-                              'assets/images/noun_calories_1180285.png'),
-                        ),
+                        height: 100,
+                        width: 120,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage(
+                                    'assets/images/imagesjohny.jpg'))),
+                        margin: const EdgeInsets.all(10),
                       ),
                       const SizedBox(
-                        width: 18.0,
+                        width: 15.0,
                       ),
                       Expanded(
                         child: Column(
@@ -266,7 +269,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                             Container(
                               width: 100,
                               margin: EdgeInsets.only(top: 5),
-                              padding: EdgeInsets.all(10),
+                              padding: EdgeInsets.all(5),
                               decoration: BoxDecoration(
                                 color: Colors.cyanAccent.withOpacity(0.2),
                                 borderRadius: BorderRadius.circular(10),
@@ -289,7 +292,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                               '1 Month Gym + Physical fitness ',
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 15.0,
+                                fontSize: 17.0,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -326,7 +329,6 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.all(4),
                 padding: const EdgeInsets.all(8),
                 child: Card(
                   elevation: 5.0,
@@ -337,11 +339,19 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                   child: Row(
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(left: 10),
-                        child: const Image(
-                          image: AssetImage(
-                              'assets/images/noun_calories_1180285.png'),
-                        ),
+                        height: 100,
+                        width: 120,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage(
+                                    'assets/images/imagesjohny.jpg'))),
+                        margin: const EdgeInsets.all(10),
+                        // child: const Image(
+                        //   fit: BoxFit.cover,
+                        //   image: AssetImage('assets/images/imagesjohny.jpg'),
+                        // ),
                       ),
                       const SizedBox(
                         width: 18.0,
@@ -352,7 +362,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                           Container(
                             width: 100,
                             margin: EdgeInsets.only(top: 5),
-                            padding: EdgeInsets.all(10),
+                            padding: EdgeInsets.all(5),
                             decoration: BoxDecoration(
                               color: Colors.cyanAccent.withOpacity(0.2),
                               borderRadius: BorderRadius.circular(10),
@@ -372,10 +382,10 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                             height: 10.0,
                           ),
                           Text(
-                            '1 Month Gym + Physical fitness ',
+                            'Quick Push up ',
                             style: TextStyle(
                               color: Colors.black,
-                              fontSize: 15.0,
+                              fontSize: 17.0,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -411,7 +421,6 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.all(4),
                 padding: const EdgeInsets.all(8),
                 child: Card(
                   elevation: 5.0,
@@ -422,11 +431,15 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                   child: Row(
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(left: 10),
-                        child: const Image(
-                          image: AssetImage(
-                              'assets/images/noun_calories_1180285.png'),
-                        ),
+                        height: 100,
+                        width: 120,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage(
+                                    'assets/images/imagesjohny.jpg'))),
+                        margin: const EdgeInsets.all(10),
                       ),
                       const SizedBox(
                         width: 18.0,
@@ -437,7 +450,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                           Container(
                             width: 100,
                             margin: EdgeInsets.only(top: 5),
-                            padding: EdgeInsets.all(10),
+                            padding: EdgeInsets.all(5),
                             decoration: BoxDecoration(
                               color: Colors.cyanAccent.withOpacity(0.2),
                               borderRadius: BorderRadius.circular(10),
@@ -457,10 +470,10 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                             height: 10.0,
                           ),
                           Text(
-                            '1 Month Gym + Physical fitness ',
+                            'Gym + Cardio ',
                             style: TextStyle(
                               color: Colors.black,
-                              fontSize: 15.0,
+                              fontSize: 17.0,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

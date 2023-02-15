@@ -51,13 +51,13 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     print(snapshot.data?.result!.length);
-                    return Expanded(
-                      flex: 1,
-                      child: ListView.builder(
-                        itemCount: snapshot.data!.result!.length,
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          return Column(
+                    return ListView.builder(
+                      itemCount: snapshot.data!.result!.length,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return Expanded(
+                          flex: 1,
+                          child: Column(
                             children: [
                               Container(
                                 padding: const EdgeInsets.all(12.0),
@@ -106,9 +106,19 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                                         children: [
                                           Row(
                                             children: [
-                                              const Image(
-                                                image: AssetImage(
-                                                    'assets/images/noun_calories_1180285.png'),
+                                              Container(
+                                                height: 100,
+                                                width: 120,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    image: DecorationImage(
+                                                        fit: BoxFit.cover,
+                                                        image: AssetImage(
+                                                            'assets/images/imagesjohny.jpg'))),
+                                                margin:
+                                                    const EdgeInsets.all(10),
                                               ),
                                               const SizedBox(
                                                 width: 12.0,
@@ -120,13 +130,28 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                                                   const SizedBox(
                                                     width: 18.0,
                                                   ),
-                                                  const Text(
-                                                    'Active Subscription',
-                                                    style: TextStyle(
-                                                      color: Color(0xFF00F0FF),
-                                                      fontWeight:
-                                                          FontWeight.w900,
-                                                      fontSize: 20.0,
+                                                  Container(
+                                                    width: 100,
+                                                    margin:
+                                                        EdgeInsets.only(top: 5),
+                                                    padding: EdgeInsets.all(5),
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.cyanAccent
+                                                          .withOpacity(0.2),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                    ),
+                                                    child: Center(
+                                                      child: Text(
+                                                        'Active',
+                                                        style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          fontSize: 15.0,
+                                                        ),
+                                                      ),
                                                     ),
                                                   ),
                                                   const SizedBox(
@@ -143,7 +168,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                                                     ),
                                                   ),
                                                   const SizedBox(
-                                                    height: 5.0,
+                                                    height: 10,
                                                   ),
                                                   Text(
                                                     'Fiscal Year :${snapshot!.data?.result![index].fiscalYear}' ??
@@ -199,27 +224,6 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                                               ),
                                             ],
                                           ),
-                                          Container(
-                                            padding: const EdgeInsets.all(8),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text(
-                                                  'Payment amount :${snapshot!.data?.result![index].paymentAmount}' ??
-                                                      '',
-                                                ),
-                                                SizedBox(
-                                                  width: 10.0,
-                                                ),
-                                                Text(
-                                                  'Payment Mode :${snapshot!.data?.result![index].paymentMode}' ??
-                                                      '',
-                                                ),
-                                              ],
-                                            ),
-                                          ),
                                         ],
                                       ),
                                     ),
@@ -227,9 +231,9 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                                 ),
                               ),
                             ],
-                          );
-                        },
-                      ),
+                          ),
+                        );
+                      },
                     );
                   } else {
                     return ShimmerEffect();

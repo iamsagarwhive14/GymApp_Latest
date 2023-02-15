@@ -36,11 +36,13 @@ class _ShimmerEffectState extends State<ShimmerEffect> {
                             Row(
                               children: [
                                 Container(
-                                  margin: EdgeInsets.only(left: 10),
-                                  child: CircleAvatar(
-                                    radius: 30,
-                                    backgroundColor: Colors.white,
+                                  height: 100,
+                                  width: 120,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
+                                  margin: const EdgeInsets.all(10),
                                 ),
                                 SizedBox(
                                   width: 10,
@@ -54,7 +56,7 @@ class _ShimmerEffectState extends State<ShimmerEffect> {
                                           borderRadius:
                                               BorderRadius.circular(20)),
                                       height: 18,
-                                      width: 250,
+                                      width: 100,
                                     ),
                                     SizedBox(
                                       height: 10,
@@ -117,34 +119,6 @@ class _ShimmerEffectState extends State<ShimmerEffect> {
                             ),
                             SizedBox(
                               height: 10,
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(left: 10, right: 10),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                    height: 10,
-                                    width: 150,
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                    height: 10,
-                                    width: 150,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 5,
                             ),
                           ],
                         ),
