@@ -3,6 +3,7 @@ import 'package:gym_mgmtsystem/model/PaymentHistory.dart';
 import 'package:gym_mgmtsystem/providers/payment_provider.dart';
 import 'package:gym_mgmtsystem/screens/details_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../services/shimmer/shimmereffect.dart';
 
@@ -14,6 +15,20 @@ class PaymentHistory extends StatefulWidget {
 }
 
 class _PaymentHistoryState extends State<PaymentHistory> {
+  String gymLogo = '';
+  @override
+  void initState() {
+    super.initState();
+    getGymLogoSharedPreference();
+  }
+
+  Future<void> getGymLogoSharedPreference() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    setState(() {
+      gymLogo = sharedPreferences.getString('logo') ?? '';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -110,13 +125,15 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                                                 height: 100,
                                                 width: 120,
                                                 decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
-                                                    image: DecorationImage(
-                                                        fit: BoxFit.cover,
-                                                        image: AssetImage(
-                                                            'assets/images/unnamed.png'))),
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  image: DecorationImage(
+                                                      fit: BoxFit.cover,
+                                                      image:
+                                                          NetworkImage(gymLogo)
+                                                      // AssetImage('assets/images/unnamed.png'),
+                                                      ),
+                                                ),
                                                 margin:
                                                     const EdgeInsets.all(10),
                                               ),

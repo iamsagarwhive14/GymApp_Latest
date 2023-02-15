@@ -56,11 +56,11 @@ class _SplashScreenState extends State<SplashScreen> {
     var gymId = prefs.getString('gymId');
 
     if (token != null && gymId != null) {
-      Navigator.pushNamed(context, RouteName.homeScreen);
+      Navigator.pushReplacementNamed(context, RouteName.homeScreen);
     } else if (gymId != null) {
-      Navigator.pushNamed(context, RouteName.loginScreen);
+      Navigator.pushReplacementNamed(context, RouteName.loginScreen);
     } else {
-      Navigator.pushNamed(context, RouteName.welcomeScreen);
+      Navigator.pushReplacementNamed(context, RouteName.welcomeScreen);
     }
   }
 }

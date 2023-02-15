@@ -27,7 +27,8 @@ Future<void> submitShowDialogue(
                 onPressed: () async {
                   GymListModel? responseApi = dataProvider.apiResult;
                   if (responseApi?.response == true) {
-                    await Navigator.pushNamed(context, RouteName.loginScreen);
+                    await Navigator.pushReplacementNamed(
+                        context, RouteName.loginScreen);
                   }
                 },
                 child: const Text(

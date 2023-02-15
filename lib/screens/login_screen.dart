@@ -281,7 +281,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 });
 
                                 if (responseApi?.response == true) {
-                                  Navigator.pushNamed(
+                                  Navigator.pushReplacementNamed(
                                       context, RouteName.homeScreen);
                                 }
                               }

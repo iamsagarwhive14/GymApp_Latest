@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_mgmtsystem/model/measurement/Measurement_model.dart';
-import 'package:gym_mgmtsystem/services/shimmer/shimmereffect.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import '../helper/logout_alert_dialogue.dart';
 import '../providers/measurement_provider.dart';
 import '../services/shimmer/shimmereffectmeasurement.dart';
 
@@ -21,22 +17,6 @@ class MeasurementScreen extends StatelessWidget {
           'measurement',
         ),
         backgroundColor: Colors.black,
-        actions: [
-          InkWell(
-            onTap: () async {
-              await LogoutShowDialoge(context);
-              SharedPreferences prefs = await SharedPreferences.getInstance();
-              prefs?.remove('token');
-            },
-            child: Icon(
-              Icons.logout,
-              size: 24,
-            ),
-          ),
-          const SizedBox(
-            width: 20,
-          )
-        ],
       ),
       body: Container(
         width: double.infinity,
