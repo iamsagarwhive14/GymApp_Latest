@@ -8,6 +8,7 @@ import '../utilities/routes/route_name.dart';
 Future<void> submitShowDialogue(
     BuildContext context, String gymName, String gymLogo) async {
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+
   gymName = sharedPreferences.getString('name') ?? '';
   gymLogo = sharedPreferences.getString('logo') ?? '';
 
@@ -15,9 +16,13 @@ Future<void> submitShowDialogue(
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: Center(child: Text(gymName.toString())),
+        title: Center(
+          child: Text(
+            gymName.toString(),
+          ),
+        ),
         content: Image.network(
-          gymLogo.toString(),
+          gymLogo,
           fit: BoxFit.cover,
         ),
         actions: [

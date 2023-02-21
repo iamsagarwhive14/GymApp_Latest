@@ -79,7 +79,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                       backgroundColor: Colors.redAccent,
                                       radius: 64.0,
                                       backgroundImage: NetworkImage(
-                                          loginProvide.profilePicture ?? ''
+                                          loginProvide.profilePicture
                                           // sharedProfilePic!,
                                           // 'https://thumbs.dreamstime.com/b/vector-illustration-avatar-dummy-logo-set-avatar-image-vector-icon-stock-vector-design-avatar-dummy-sign-137159692.jpg',
                                           ),

@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,8 +10,8 @@ class LoginProvide extends ChangeNotifier {
   String gymUrl = '';
   String gymId = '';
   Usermodel? _result;
-  String? userName;
-  String? profilePicture;
+  String userName = '';
+  String profilePicture = '';
   Usermodel? get apiResult => _result;
 
   Future<Object?> login(String email, password, context) async {
@@ -72,8 +70,7 @@ class LoginProvide extends ChangeNotifier {
   Future<String?> checkPrefsForUserName() async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     var shareduserName = _prefs.getString('username');
-    var sharedProfilePic = _prefs.getString('profile_picture');
-    userName = shareduserName;
+    userName = shareduserName!;
     notifyListeners();
     return userName;
   }
@@ -81,7 +78,7 @@ class LoginProvide extends ChangeNotifier {
   Future<String?> checkPrefsForUserProfile() async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     var sharedProfilePic = _prefs.getString('profile_picture');
-    profilePicture = sharedProfilePic;
+    profilePicture = sharedProfilePic!;
     notifyListeners();
     return profilePicture;
   }

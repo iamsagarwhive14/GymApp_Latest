@@ -18,6 +18,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   String gymLogo = '';
   TextEditingController idController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  @override
+  void initState() {
+    super.initState();
+    getGymDetailSharedPreference();
+  }
 
   Future<void> getGymDetailSharedPreference() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -25,12 +30,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       gymName = sharedPreferences.getString('name') ?? '';
       gymLogo = sharedPreferences.getString('logo') ?? '';
     });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getGymDetailSharedPreference();
   }
 
   @override
@@ -160,7 +159,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                   await submitShowDialogue(
                                       context, gymName, gymLogo);
                                 } else if (responseApi?.response == false) {
-                                  // print('this is sles part');
+                                  // print('this is else part');
                                   // var msg = responseApi!.msg.toString();
                                   // print('messages gym:${responseApi!.msg}');
                                   // await showSnackBar(msg!, context,

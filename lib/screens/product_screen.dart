@@ -25,51 +25,54 @@ class _ProductScreenState extends State<ProductScreen> {
               // padding: EdgeInsets.symmetric(vertical: 10),
               margin: EdgeInsets.only(left: 5, top: 10),
               height: MediaQuery.of(context).size.height * 0.08,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Icon(
-                    Icons.arrow_back,
-                    color: Colors.black,
-                    size: 25,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    padding: const EdgeInsets.only(left: 5, right: 5),
-                    child: TextFormField(
-                      // controller: idController,
-                      decoration: const InputDecoration(
-                        hintText: 'Enter product Name',
-                        contentPadding: EdgeInsets.all(17),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(30),
-                          ),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(30),
-                          ),
-                        ),
-                      ),
-                      validator: (value) {
-                        return value!.isEmpty ? ' ' : null;
-                      },
+              child: Expanded(
+                flex: 1,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(
+                      Icons.arrow_back,
+                      color: Colors.black,
+                      size: 25,
                     ),
-                  ),
-                  Icon(
-                    Icons.shopping_cart,
-                    color: Colors.black,
-                    size: 25,
-                  ),
-                  Icon(
-                    Icons.more_vert,
-                    color: Colors.black,
-                    size: 25,
-                  ),
-                ],
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      padding: const EdgeInsets.only(left: 5, right: 5),
+                      child: TextFormField(
+                        // controller: idController,
+                        decoration: const InputDecoration(
+                          hintText: 'Enter product Name',
+                          contentPadding: EdgeInsets.all(17),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(30),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(30),
+                            ),
+                          ),
+                        ),
+                        validator: (value) {
+                          return value!.isEmpty ? ' ' : null;
+                        },
+                      ),
+                    ),
+                    Icon(
+                      Icons.shopping_cart,
+                      color: Colors.black,
+                      size: 25,
+                    ),
+                    Icon(
+                      Icons.more_vert,
+                      color: Colors.black,
+                      size: 25,
+                    ),
+                  ],
+                ),
               ),
             ),
             SizedBox(
