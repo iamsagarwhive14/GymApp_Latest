@@ -28,48 +28,44 @@ class _ProductScreenState extends State<ProductScreen> {
               child: Expanded(
                 flex: 1,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    SizedBox(
+                      width: 15,
+                    ),
                     Icon(
                       Icons.arrow_back,
                       color: Colors.black,
                       size: 25,
                     ),
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      padding: const EdgeInsets.only(left: 5, right: 5),
-                      child: TextFormField(
-                        // controller: idController,
-                        decoration: const InputDecoration(
-                          hintText: 'Enter product Name',
-                          contentPadding: EdgeInsets.all(17),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.black),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(30),
+                    Center(
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        padding: const EdgeInsets.only(left: 20, right: 5),
+                        child: TextFormField(
+                          // controller: idController,
+                          decoration: const InputDecoration(
+                            hintText: 'Enter product Name',
+                            contentPadding: EdgeInsets.all(17),
+                            border: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.black, width: 2),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(30),
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.black, width: 2),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(30),
+                              ),
                             ),
                           ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.black),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(30),
-                            ),
-                          ),
+                          validator: (value) {
+                            return value!.isEmpty ? ' ' : null;
+                          },
                         ),
-                        validator: (value) {
-                          return value!.isEmpty ? ' ' : null;
-                        },
                       ),
-                    ),
-                    Icon(
-                      Icons.shopping_cart,
-                      color: Colors.black,
-                      size: 25,
-                    ),
-                    Icon(
-                      Icons.more_vert,
-                      color: Colors.black,
-                      size: 25,
                     ),
                   ],
                 ),
@@ -92,7 +88,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     child: Row(
                       children: [
                         Text(
-                          'Category',
+                          'View Product',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.grey,

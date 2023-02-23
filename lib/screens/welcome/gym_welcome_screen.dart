@@ -21,15 +21,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   void initState() {
     super.initState();
-    getGymDetailSharedPreference();
-  }
-
-  Future<void> getGymDetailSharedPreference() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    setState(() {
-      gymName = sharedPreferences.getString('name') ?? '';
-      gymLogo = sharedPreferences.getString('logo') ?? '';
-    });
   }
 
   @override
@@ -141,7 +132,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                     child: CircularProgressIndicator(
                                     color: Colors.white,
                                   ))
-                                : Text('submit'),
+                                : const Text('submit'),
                             onPressed: () async {
                               if (_formKey.currentState!.validate()) {
                                 setState(() {
@@ -157,7 +148,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                     dataProvider.apiResult;
                                 if (responseApi?.response == true) {
                                   await submitShowDialogue(
-                                      context, gymName, gymLogo);
+                                      context,
+                                      responseApi!.result.name,
+                                      responseApi!.result.logo);
+                                  idController.clear();
                                 } else if (responseApi?.response == false) {
                                   // print('this is else part');
                                   // var msg = responseApi!.msg.toString();

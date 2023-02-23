@@ -7,11 +7,6 @@ import '../utilities/routes/route_name.dart';
 
 Future<void> submitShowDialogue(
     BuildContext context, String gymName, String gymLogo) async {
-  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-
-  gymName = sharedPreferences.getString('name') ?? '';
-  gymLogo = sharedPreferences.getString('logo') ?? '';
-
   await showDialog(
     context: context,
     builder: (context) {

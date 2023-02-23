@@ -75,7 +75,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                           child: Column(
                             children: [
                               Container(
-                                padding: const EdgeInsets.all(12.0),
+                                padding: const EdgeInsets.all(7.0),
                                 child: Flexible(
                                   child: InkWell(
                                     onTap: () {

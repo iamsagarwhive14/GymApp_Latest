@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../helper/order_alert_dialogue.dart';
 import '../home_screen.dart';
 import '../product_screen.dart';
 
@@ -59,7 +60,7 @@ class ProductDetail extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                            color: Colors.blueAccent,
+                            color: const Color(0xFF00F0FF),
                             borderRadius: BorderRadius.circular(20)),
                         child: Icon(
                           Icons.arrow_back_ios,
@@ -72,7 +73,7 @@ class ProductDetail extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                            color: Colors.blueAccent,
+                            color: const Color(0xFF00F0FF),
                             borderRadius: BorderRadius.circular(20)),
                         child: Icon(
                           Icons.shopping_cart_outlined,
@@ -148,6 +149,33 @@ class ProductDetail extends StatelessWidget {
                               fontWeight: FontWeight.w400,
                               height: 1.5,
                             ),
+                          ),
+                        ),
+                      ),
+                      Center(
+                        child: GestureDetector(
+                          onTap: () async {
+                            await ShowOrderDialogue(context);
+                          },
+                          child: Container(
+                            margin: EdgeInsets.only(
+                              top: 10,
+                              bottom: 5,
+                            ),
+                            height: 50,
+                            width: 150,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: const Color(0xFF00F0FF),
+                            ),
+                            child: Center(
+                                child: Text(
+                              'Buy',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            )),
                           ),
                         ),
                       )

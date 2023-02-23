@@ -10,7 +10,7 @@ class InputTextField extends StatelessWidget {
   final String hint;
   final bool obscureText;
   final bool enable, autoFocus;
-  final IconButton icon;
+  final IconButton? icon;
 
   const InputTextField({
     Key? key,
@@ -23,7 +23,7 @@ class InputTextField extends StatelessWidget {
     required this.obscureText,
     this.enable = true,
     this.autoFocus = false,
-    required this.icon,
+    this.icon,
   }) : super(key: key);
 
   @override
