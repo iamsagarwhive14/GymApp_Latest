@@ -8,9 +8,6 @@ import '../utilities/routes/route_name.dart';
 
 Future<void> ShowOrderDialogue(BuildContext context) async {
   final _formKey = GlobalKey<FormState>();
-
-  TextEditingController _gymidController = TextEditingController();
-  TextEditingController _userIdController = TextEditingController();
   TextEditingController _nameController = TextEditingController();
   TextEditingController _addressController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
@@ -38,70 +35,6 @@ Future<void> ShowOrderDialogue(BuildContext context) async {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Gym Id',
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                    TextFormField(
-                      controller: _gymidController,
-                      decoration: const InputDecoration(
-                        hintText: 'Enter Gym id ',
-                        contentPadding: EdgeInsets.all(17),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black, width: 2),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
-                          ),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black, width: 2),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
-                          ),
-                        ),
-                      ),
-                      validator: (value) {
-                        return value!.isEmpty ? ' ' : null;
-                      },
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'User id ',
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                    TextFormField(
-                      controller: _userIdController,
-                      decoration: const InputDecoration(
-                        hintText: 'Enter user id',
-                        contentPadding: EdgeInsets.all(17),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black, width: 2),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
-                          ),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black, width: 2),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
-                          ),
-                        ),
-                      ),
-                      validator: (value) {
-                        return value!.isEmpty ? ' ' : null;
-                      },
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
                     Text(
                       'Name',
                       style: TextStyle(

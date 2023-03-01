@@ -170,7 +170,7 @@ class ProductDetail extends StatelessWidget {
                             ),
                             child: Center(
                                 child: Text(
-                              'Buy',
+                              'Add to Cart',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
