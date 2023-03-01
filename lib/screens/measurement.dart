@@ -32,10 +32,10 @@ class MeasurementScreen extends StatelessWidget {
               future: dataprovider.measurementData(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  print(snapshot.data!.result!.history.length);
+                  print(snapshot.data!.result!.length);
                   return Expanded(
                     child: ListView.builder(
-                      itemCount: snapshot.data!.result!.history.length,
+                      itemCount: snapshot.data!.result!.length,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         return Column(
@@ -79,7 +79,7 @@ class MeasurementScreen extends StatelessWidget {
                                                 height: 10.0,
                                               ),
                                               Text(
-                                                'bicep:${snapshot!.data?.result!.history[index].bicep}' ??
+                                                'bicep:${snapshot!.data?.result![index].bicep}' ??
                                                     '',
                                                 style: const TextStyle(
                                                   color: Colors.black,
@@ -91,7 +91,7 @@ class MeasurementScreen extends StatelessWidget {
                                                 height: 5.0,
                                               ),
                                               Text(
-                                                'calf :${snapshot!.data?.result.history[index].calf}' ??
+                                                'calf :${snapshot!.data?.result![index].calf}' ??
                                                     '',
                                                 style: const TextStyle(
                                                   color: Colors.black,
@@ -103,7 +103,7 @@ class MeasurementScreen extends StatelessWidget {
                                                 height: 5.0,
                                               ),
                                               Text(
-                                                'chest :${snapshot!.data?.result.history[index].chest}' ??
+                                                'chest :${snapshot!.data?.result![index].chest}' ??
                                                     '',
                                                 style: const TextStyle(
                                                   color: Colors.black,
@@ -115,7 +115,7 @@ class MeasurementScreen extends StatelessWidget {
                                                 height: 5.0,
                                               ),
                                               Text(
-                                                'Forearm :${snapshot!.data?.result.history[index].forearm}' ??
+                                                'Forearm :${snapshot!.data?.result![index].forearm}' ??
                                                     '',
                                                 style: TextStyle(
                                                   color: Colors.grey,
@@ -127,7 +127,7 @@ class MeasurementScreen extends StatelessWidget {
                                                 height: 5.0,
                                               ),
                                               Text(
-                                                'Hips :${snapshot!.data?.result.history[index].hips}' ??
+                                                'Hips :${snapshot!.data?.result![index].hips}' ??
                                                     '',
                                                 style: TextStyle(
                                                   color: Colors.grey,
@@ -149,14 +149,14 @@ class MeasurementScreen extends StatelessWidget {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              'Weight :${snapshot!.data?.result!.history[index].weight}' ??
+                                              'Weight :${snapshot!.data?.result![index].weight}' ??
                                                   '',
                                             ),
                                             SizedBox(
                                               width: 10.0,
                                             ),
                                             Text(
-                                              'Waist :${snapshot!.data?.result!.history[index].waist}' ??
+                                              'Waist :${snapshot!.data?.result![index].waist}' ??
                                                   '',
                                             ),
                                           ],
