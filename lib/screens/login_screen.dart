@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:gym_mgmtsystem/model/user_model.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -95,15 +96,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Login',
-                      style: TextStyle(
-                        color: Colors.yellow,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22.0,
-                      ),
-                    ),
+                  children: [
+                    Text('Login',
+                        style: GoogleFonts.lato(
+                          textStyle: TextStyle(
+                            color: Colors.yellow,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22.0,
+                          ),
+                        )),
                   ],
                 ),
               ),

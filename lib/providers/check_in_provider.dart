@@ -48,11 +48,17 @@ class CheckInProvider extends ChangeNotifier {
     }
   }
 
-  Future<String> setCheckInTimeSharedPreference(String checkInTime) async {
+  void setCheckInTimeSharedPreference(String checkInTime) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    var sharedCheckInTime =
-        sharedPreferences.setString('checkInTime', checkInTime);
-    checkInTime = sharedCheckInTime! as String;
+    await sharedPreferences.setString('checkInTime', checkInTime);
+    notifyListeners();
+  }
+
+  Future<String?> checkPrefsForCheckInTime() async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    var sharedCheckInTime = _prefs.getString('checkInTime');
+    checkInTime = sharedCheckInTime!;
+    print(checkInTime);
     notifyListeners();
     return checkInTime;
   }

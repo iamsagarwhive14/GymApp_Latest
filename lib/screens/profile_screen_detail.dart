@@ -190,7 +190,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                   dataProvider.checkInResult?.result
                                               .checkInTime !=
                                           null
-                                      ? dataProvider.checkInTime!
+                                      ? checkInTime.toString()!
                                       : 'your time ',
                                   style: const TextStyle(
                                       color: Colors.grey,

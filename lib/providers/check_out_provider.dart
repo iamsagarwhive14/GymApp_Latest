@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:gym_mgmtsystem/model/check/CheckInModel.dart';
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../model/checkoutmodel/CheckOutModel.dart';
@@ -10,6 +9,7 @@ import '../utilities/constant.dart';
 class CheckOutProvider extends ChangeNotifier {
   CheckOutModel? _checkOutResult;
   CheckOutModel? get checkOutResult => _checkOutResult;
+  String? checkOutTime = '';
   Future<CheckOutModel?> checkOutData() async {
     var data;
     SharedPreferences _prefs = await SharedPreferences.getInstance();
@@ -36,7 +36,7 @@ class CheckOutProvider extends ChangeNotifier {
         var responseJson = jsonDecode(response.body);
         notifyListeners();
         setCheckOutTimeSharedPreference(
-          data['result']['check_out_time'],
+          data['result']['check_in_time'],
         );
 
         return CheckOutModel.fromJson(responseJson);
@@ -52,7 +52,15 @@ class CheckOutProvider extends ChangeNotifier {
   void setCheckOutTimeSharedPreference(String checkOutTime) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     await sharedPreferences.setString('checkOutTime', checkOutTime);
+    notifyListeners();
+  }
+
+  Future<String?> checkPrefsForCheckOutTime() async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    var sharedcheckOutTime = _prefs.getString('checkOutTime');
+    checkOutTime = sharedcheckOutTime!;
     print(checkOutTime);
     notifyListeners();
+    return checkOutTime;
   }
 }

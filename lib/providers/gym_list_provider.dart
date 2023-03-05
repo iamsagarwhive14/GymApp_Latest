@@ -5,6 +5,7 @@ import 'package:gym_mgmtsystem/utilities/constant.dart';
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../model/gymmodel/GymListModel.dart';
+import '../helper/show_snackbar.dart';
 
 class GymListProvider extends ChangeNotifier {
   GymListModel? _result;
@@ -22,10 +23,10 @@ class GymListProvider extends ChangeNotifier {
       if (response.statusCode == 200) {
         data = await jsonDecode(response.body.toString());
         _result = GymListModel.fromJson(data);
+
         if (_result?.response == false) {
           var msg = _result?.msg.toString();
-          print(_result?.response);
-          // showSnackBar(msg!, context, color: Colors.red);
+          showSnackBar(msg!, context, color: Colors.red);
           notifyListeners();
         }
         setGymListSharedPreference(

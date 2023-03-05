@@ -43,6 +43,7 @@ dependencies:
   firebase_messaging:
   flutter_local_notifications: ^9.2.0
   shimmer: ^2.0.0
+  google_fonts: ^4.0.3
 
 dev_dependencies:
   flutter_test:
