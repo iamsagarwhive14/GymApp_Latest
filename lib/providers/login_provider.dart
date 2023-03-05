@@ -42,7 +42,7 @@ class LoginProvide extends ChangeNotifier {
           data['result']['last_name'],
           data['result']['username'],
           data['result']['profile_picture'],
-          data['result']['id'],
+          // data['result']['id'],
         );
 
         return _result;
@@ -63,7 +63,7 @@ class LoginProvide extends ChangeNotifier {
     String lastName,
     String username,
     String profilePicture,
-    String id,
+    // String id,
   ) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     await sharedPreferences.setString('token', token);
@@ -71,7 +71,7 @@ class LoginProvide extends ChangeNotifier {
     await sharedPreferences.setString('last_name', lastName);
     await sharedPreferences.setString('username', username);
     await sharedPreferences.setString('profile_picture', profilePicture);
-    await sharedPreferences.setString('userId', id);
+    // await sharedPreferences.setString('userId', id);
     notifyListeners();
   }
 

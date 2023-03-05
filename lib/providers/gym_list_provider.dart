@@ -29,7 +29,7 @@ class GymListProvider extends ChangeNotifier {
           notifyListeners();
         }
         setGymListSharedPreference(
-          data['result']['id'],
+          // data['result']['id'],
           data['result']['name'],
           data['result']['logo'],
           data['result']['url'],
@@ -44,9 +44,13 @@ class GymListProvider extends ChangeNotifier {
   }
 
   void setGymListSharedPreference(
-      String id, String name, String logo, String url, String gymId) async {
+      // String id
+      String name,
+      String logo,
+      String url,
+      String gymId) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    await sharedPreferences.setString('eachGymId', id.toString());
+    // await sharedPreferences.setString('eachGymId', id.toString());
     await sharedPreferences.setString('name', name.toString());
     await sharedPreferences.setString('logo', logo.toString());
     await sharedPreferences.setString('url', url.toString());
