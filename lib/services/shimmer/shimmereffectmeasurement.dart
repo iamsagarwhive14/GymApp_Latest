@@ -19,7 +19,7 @@ class _ShimmerEffectMeasurementState extends State<ShimmerEffectMeasurement> {
             itemCount: 10,
             itemBuilder: (context, index) {
               return Card(
-                elevation: 5,
+                // elevation: 5,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0),
                 ),

@@ -272,7 +272,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                     return Container(
                       padding: const EdgeInsets.all(8),
                       child: Card(
-                        elevation: 5.0,
+                        elevation: 2,
                         color: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),

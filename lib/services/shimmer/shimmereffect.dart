@@ -18,7 +18,7 @@ class _ShimmerEffectState extends State<ShimmerEffect> {
             itemCount: 10,
             itemBuilder: (context, index) {
               return Card(
-                elevation: 5,
+                // elevation: 5,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15.0),
                 ),
