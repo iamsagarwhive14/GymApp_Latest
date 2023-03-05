@@ -161,7 +161,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                               children: [
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.cyanAccent,
+                                    backgroundColor: const Color(0xFF2d5d7b),
                                     shape: const RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(10)),
@@ -169,7 +169,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                   ),
                                   child: Text(
                                     'checkIn',
-                                    style: TextStyle(color: Colors.black),
+                                    style: TextStyle(color: Colors.white),
                                   ),
                                   onPressed: dataProvider.checkInResult?.result
                                               .checkInTime ==
@@ -190,7 +190,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                   dataProvider.checkInResult?.result
                                               .checkInTime !=
                                           null
-                                      ? checkInTime.toString()
+                                      ? dataProvider.checkInTime!
                                       : 'your time ',
                                   style: const TextStyle(
                                       color: Colors.grey,
@@ -207,7 +207,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                               children: [
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.cyanAccent,
+                                    backgroundColor: const Color(0xFF2d5d7b),
                                     shape: const RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(10)),
@@ -215,7 +215,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                   ),
                                   child: Text(
                                     'checkOut',
-                                    style: TextStyle(color: Colors.black),
+                                    style: TextStyle(color: Colors.white),
                                   ),
                                   onPressed: dataProvider.checkOutResult?.result
                                               .checkOutTime ==

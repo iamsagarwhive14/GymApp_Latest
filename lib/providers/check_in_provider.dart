@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:gym_mgmtsystem/model/check/CheckInModel.dart';
 import 'package:http/http.dart';
@@ -9,6 +8,7 @@ import '../utilities/constant.dart';
 class CheckInProvider extends ChangeNotifier {
   CheckInModel? _checkInResult;
   CheckInModel? get checkInResult => _checkInResult;
+  String? checkInTime = '';
 
   Future<CheckInModel?> checkInData() async {
     var data;
@@ -48,10 +48,12 @@ class CheckInProvider extends ChangeNotifier {
     }
   }
 
-  void setCheckInTimeSharedPreference(String checkInTime) async {
+  Future<String> setCheckInTimeSharedPreference(String checkInTime) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    await sharedPreferences.setString('checkInTime', checkInTime);
-    print(checkInTime);
+    var sharedCheckInTime =
+        sharedPreferences.setString('checkInTime', checkInTime);
+    checkInTime = sharedCheckInTime! as String;
     notifyListeners();
+    return checkInTime;
   }
 }

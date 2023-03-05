@@ -62,7 +62,7 @@ class ProductDetail extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                            color: const Color(0xFF00F0FF),
+                            color: const Color(0xFF2d5d7b),
                             borderRadius: BorderRadius.circular(20)),
                         child: Icon(
                           Icons.arrow_back_ios,
@@ -75,7 +75,7 @@ class ProductDetail extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                            color: const Color(0xFF00F0FF),
+                            color: const Color(0xFF2d5d7b),
                             borderRadius: BorderRadius.circular(20)),
                         child: Icon(
                           Icons.shopping_cart_outlined,
@@ -168,15 +168,15 @@ class ProductDetail extends StatelessWidget {
                             width: 150,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: const Color(0xFF00F0FF),
+                              color: const Color(0xFF2d5d7b),
                             ),
                             child: Center(
                                 child: Text(
                               'Add to Cart',
                               style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              ),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: Colors.white),
                             )),
                           ),
                         ),

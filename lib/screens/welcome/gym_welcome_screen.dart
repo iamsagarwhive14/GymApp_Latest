@@ -30,7 +30,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           backgroundColor: Colors.white,
           resizeToAvoidBottomInset: true,
           appBar: AppBar(
-            backgroundColor: const Color(0xFF00F0FF),
+            backgroundColor: const Color(0xFF2d5d7b),
             title: const Text('Welcome Gymers '),
             centerTitle: true,
           ),
@@ -122,7 +122,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           ),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFF00F0FF),
+                              backgroundColor: const Color(0xFF2d5d7b),
                               shape: const RoundedRectangleBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),

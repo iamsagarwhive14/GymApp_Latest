@@ -133,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: const Color(0xFF2d5d7b),
         onTap: (index) => setState(
           () => _selectedIndex = index,
         ),
@@ -166,7 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xFF00F0FF),
+        backgroundColor: const Color(0xFF2d5d7b),
         onPressed: () {
           // Navigator.push(
           //   context,
