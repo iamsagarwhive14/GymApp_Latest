@@ -42,6 +42,7 @@ class LoginProvide extends ChangeNotifier {
           data['result']['last_name'],
           data['result']['username'],
           data['result']['profile_picture'],
+          data['result']['id'],
         );
 
         return _result;
@@ -56,14 +57,21 @@ class LoginProvide extends ChangeNotifier {
     }
   }
 
-  void pageRouteSharedPrefernce(String token, String firstName, String lastName,
-      String username, String profilePicture) async {
+  void pageRouteSharedPrefernce(
+    String token,
+    String firstName,
+    String lastName,
+    String username,
+    String profilePicture,
+    String id,
+  ) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     await sharedPreferences.setString('token', token);
     await sharedPreferences.setString('first_name', firstName);
     await sharedPreferences.setString('last_name', lastName);
     await sharedPreferences.setString('username', username);
     await sharedPreferences.setString('profile_picture', profilePicture);
+    await sharedPreferences.setString('userId', id);
     notifyListeners();
   }
 

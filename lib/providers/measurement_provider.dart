@@ -23,13 +23,10 @@ class MeasurementProvider extends ChangeNotifier {
         },
       );
       if (response.statusCode == 200) {
-        print(response.statusCode);
         var responseJson = jsonDecode(response.body);
-        print(responseJson);
         notifyListeners();
         return MeasurementModel.fromJson(responseJson);
       } else {
-        print('data is not available');
         print(
             "Niko" + 'data  is not created ' + response.statusCode.toString());
       }

@@ -12,16 +12,18 @@ class ProductDetail extends StatelessWidget {
   final String image;
   final String createdAt;
   final String updatedAt;
+  final String productId;
 
-  const ProductDetail(
-      {Key? key,
-      required this.name,
-      required this.description,
-      required this.price,
-      required this.image,
-      required this.createdAt,
-      required this.updatedAt})
-      : super(key: key);
+  const ProductDetail({
+    Key? key,
+    required this.name,
+    required this.description,
+    required this.price,
+    required this.image,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.productId,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -155,7 +157,7 @@ class ProductDetail extends StatelessWidget {
                       Center(
                         child: GestureDetector(
                           onTap: () async {
-                            await ShowOrderDialogue(context);
+                            await ShowOrderDialogue(context, productId);
                           },
                           child: Container(
                             margin: EdgeInsets.only(

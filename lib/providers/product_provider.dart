@@ -23,7 +23,6 @@ class ProductProvider extends ChangeNotifier {
         ),
       );
       if (response.statusCode == 200) {
-        print('response is true');
         data = await jsonDecode(response.body.toString());
         _result = ProductModel.fromJson(data);
         notifyListeners();

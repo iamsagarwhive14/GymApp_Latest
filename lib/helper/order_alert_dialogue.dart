@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../model/gymmodel/GymListModel.dart';
-import '../providers/gym_list_provider.dart';
-import '../res/components/input_text_field.dart';
-import '../utilities/routes/route_name.dart';
+import '../providers/order_provider.dart';
 
-Future<void> ShowOrderDialogue(BuildContext context) async {
+Future<void> ShowOrderDialogue(BuildContext context, String productId) async {
   final _formKey = GlobalKey<FormState>();
   TextEditingController _nameController = TextEditingController();
   TextEditingController _addressController = TextEditingController();
@@ -15,6 +11,7 @@ Future<void> ShowOrderDialogue(BuildContext context) async {
   await showDialog(
     context: context,
     builder: (context) {
+      var orderProvider = Provider.of<OrderProvider>(context);
       return AlertDialog(
         title: Center(
           child: const Text(
@@ -39,8 +36,8 @@ Future<void> ShowOrderDialogue(BuildContext context) async {
                       'Name',
                       style: TextStyle(
                           fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey),
                     ),
                     TextFormField(
                       controller: _nameController,
@@ -71,8 +68,8 @@ Future<void> ShowOrderDialogue(BuildContext context) async {
                       'Address',
                       style: TextStyle(
                           fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey),
                     ),
                     TextFormField(
                       controller: _addressController,
@@ -103,8 +100,8 @@ Future<void> ShowOrderDialogue(BuildContext context) async {
                       'Phone',
                       style: TextStyle(
                           fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey),
                     ),
                     TextFormField(
                       controller: _phoneController,
@@ -135,8 +132,8 @@ Future<void> ShowOrderDialogue(BuildContext context) async {
                       'Quantity',
                       style: TextStyle(
                           fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey),
                     ),
                     TextFormField(
                       controller: _quantityController,
@@ -168,7 +165,19 @@ Future<void> ShowOrderDialogue(BuildContext context) async {
         ),
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () async {
+              print('tapped');
+              await orderProvider.orderMethode(
+                context,
+                _nameController.text.toString(),
+                _addressController.text.toString(),
+                _phoneController.text,
+                productId,
+                _quantityController.text,
+              );
+              print('tapped2');
+              Navigator.pop(context);
+            },
             child: const Text(
               'Submit',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),

@@ -28,13 +28,10 @@ class PaymentHistoryProvider extends ChangeNotifier {
         },
       );
       if (response.statusCode == 200) {
-        print(response.statusCode);
         var responseJson = jsonDecode(response.body);
         notifyListeners();
-        print(responseJson);
         return PaymentHistoryData.fromJson(responseJson);
       } else {
-        print('data is not available');
         print('data  is not created ' + response.statusCode.toString());
       }
     } catch (e) {

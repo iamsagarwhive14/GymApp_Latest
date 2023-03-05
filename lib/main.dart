@@ -6,6 +6,7 @@ import 'package:gym_mgmtsystem/providers/check_out_provider.dart';
 import 'package:gym_mgmtsystem/providers/gym_list_provider.dart';
 import 'package:gym_mgmtsystem/providers/login_provider.dart';
 import 'package:gym_mgmtsystem/providers/measurement_provider.dart';
+import 'package:gym_mgmtsystem/providers/order_provider.dart';
 import 'package:gym_mgmtsystem/providers/payment_provider.dart';
 import 'package:gym_mgmtsystem/providers/product_provider.dart';
 import 'package:gym_mgmtsystem/services/local_notification_service.dart';
@@ -47,6 +48,9 @@ void main() async {
       ),
       ChangeNotifierProvider(
         create: (context) => ProductProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => OrderProvider(),
       ),
     ], child: MyApp()),
   );

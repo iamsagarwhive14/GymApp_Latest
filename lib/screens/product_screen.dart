@@ -172,6 +172,13 @@ class _ProductScreenState extends State<ProductScreen> {
                                                             .products[index]
                                                             .updatedAt ??
                                                         'saguaro',
+                                                    productId: (dataProvider
+                                                                .apiResult
+                                                                ?.result
+                                                                .products[index]
+                                                                .id ??
+                                                            'saguaro')
+                                                        .toString(),
                                                   )));
                                     },
                                     child: Stack(
