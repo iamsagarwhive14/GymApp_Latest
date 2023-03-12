@@ -59,7 +59,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(50),
                           bottomRight: Radius.circular(50)),
-                      color: Color(0xFF201E21),
+                      color: const Color(0xFF2d5d7b),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
