@@ -81,9 +81,11 @@ class MeasurementScreen extends StatelessWidget {
                                                 width: 18.0,
                                               ),
                                               Text(
-                                                'Measurement',
+                                                'Date:${snapshot!.data?.result![index].date}' ??
+                                                    '',
                                                 style: GoogleFonts.openSans(
-                                                  color: Color(0xFF00F0FF),
+                                                  color:
+                                                      const Color(0xFF2d5d7b),
                                                   fontWeight: FontWeight.w900,
                                                   fontSize: 18.0,
                                                 ),
@@ -91,60 +93,142 @@ class MeasurementScreen extends StatelessWidget {
                                               const SizedBox(
                                                 height: 10.0,
                                               ),
-                                              Text(
-                                                'bicep:${snapshot!.data?.result![index].bicep}' ??
-                                                    '',
-                                                style: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 15.0,
-                                                  fontWeight: FontWeight.bold,
+                                              Container(
+                                                height: 25,
+                                                width: 150,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                      color: const Color(
+                                                          0xFF2d5d7b),
+                                                      width: 1,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5),
+                                                    color: Colors.grey[300]),
+                                                child: Center(
+                                                  child: Text(
+                                                    'bicep:${snapshot!.data?.result![index].bicep}' ??
+                                                        '',
+                                                    style: const TextStyle(
+                                                      color: Colors.black,
+                                                      fontSize: 15.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
                                               const SizedBox(
                                                 height: 5.0,
                                               ),
-                                              Text(
-                                                  'calf :${snapshot!.data?.result![index].calf}' ??
-                                                      '',
-                                                  style: GoogleFonts.openSans(
-                                                    color: Colors.black,
-                                                    fontSize: 15.0,
-                                                    fontWeight: FontWeight.bold,
-                                                  )),
-                                              const SizedBox(
-                                                height: 5.0,
-                                              ),
-                                              Text(
-                                                'chest :${snapshot!.data?.result![index].chest}' ??
-                                                    '',
-                                                style: GoogleFonts.openSans(
-                                                  color: Colors.black,
-                                                  fontSize: 15.0,
-                                                  fontWeight: FontWeight.bold,
+                                              Container(
+                                                height: 25,
+                                                width: 150,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: const Color(
+                                                            0xFF2d5d7b),
+                                                        width: 1),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5),
+                                                    color: Colors.grey[300]),
+                                                child: Center(
+                                                  child: Text(
+                                                      'calf :${snapshot!.data?.result![index].calf}' ??
+                                                          '',
+                                                      style:
+                                                          GoogleFonts.openSans(
+                                                        color: Colors.black,
+                                                        fontSize: 15.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      )),
                                                 ),
                                               ),
                                               const SizedBox(
                                                 height: 5.0,
                                               ),
-                                              Text(
-                                                'Forearm :${snapshot!.data?.result![index].forearm}' ??
-                                                    '',
-                                                style: GoogleFonts.openSans(
-                                                  color: Colors.black,
-                                                  fontSize: 15.0,
-                                                  fontWeight: FontWeight.bold,
+                                              Container(
+                                                height: 25,
+                                                width: 150,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: const Color(
+                                                            0xFF2d5d7b),
+                                                        width: 1),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5),
+                                                    color: Colors.grey[300]),
+                                                child: Center(
+                                                  child: Text(
+                                                    'chest :${snapshot!.data?.result![index].chest}' ??
+                                                        '',
+                                                    style: GoogleFonts.openSans(
+                                                      color: Colors.black,
+                                                      fontSize: 15.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
                                               const SizedBox(
                                                 height: 5.0,
                                               ),
-                                              Text(
-                                                'Hips :${snapshot!.data?.result![index].hips}' ??
-                                                    '',
-                                                style: GoogleFonts.openSans(
-                                                  color: Colors.black,
-                                                  fontSize: 15.0,
-                                                  fontWeight: FontWeight.bold,
+                                              Container(
+                                                height: 25,
+                                                width: 150,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: const Color(
+                                                            0xFF2d5d7b),
+                                                        width: 1),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5),
+                                                    color: Colors.grey[300]),
+                                                child: Center(
+                                                  child: Text(
+                                                    'Forearm :${snapshot!.data?.result![index].forearm}' ??
+                                                        '',
+                                                    style: GoogleFonts.openSans(
+                                                      color: Colors.black,
+                                                      fontSize: 15.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 5.0,
+                                              ),
+                                              Container(
+                                                height: 25,
+                                                width: 150,
+                                                decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                        color: const Color(
+                                                            0xFF2d5d7b),
+                                                        width: 1),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5),
+                                                    color: Colors.grey[300]),
+                                                child: Center(
+                                                  child: Text(
+                                                    'Hips :${snapshot!.data?.result![index].hips}' ??
+                                                        '',
+                                                    style: GoogleFonts.openSans(
+                                                      color: Colors.black,
+                                                      fontSize: 15.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
                                               const SizedBox(
@@ -160,25 +244,55 @@ class MeasurementScreen extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text(
-                                              'Weight :${snapshot!.data?.result![index].weight}' ??
-                                                  '',
-                                              style: GoogleFonts.openSans(
-                                                color: Colors.black,
-                                                fontSize: 15.0,
-                                                fontWeight: FontWeight.normal,
+                                            Container(
+                                              height: 25,
+                                              width: 150,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: const Color(
+                                                          0xFF2d5d7b),
+                                                      width: 1),
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  color: Colors.grey[300]),
+                                              child: Center(
+                                                child: Text(
+                                                  'Weight :${snapshot!.data?.result![index].weight}' ??
+                                                      '',
+                                                  style: GoogleFonts.openSans(
+                                                    color: Colors.black,
+                                                    fontSize: 15.0,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                  ),
+                                                ),
                                               ),
                                             ),
                                             SizedBox(
                                               width: 10.0,
                                             ),
-                                            Text(
-                                              'Waist :${snapshot!.data?.result![index].waist}' ??
-                                                  '',
-                                              style: GoogleFonts.openSans(
-                                                color: Colors.black,
-                                                fontSize: 15.0,
-                                                fontWeight: FontWeight.normal,
+                                            Container(
+                                              height: 25,
+                                              width: 150,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: const Color(
+                                                          0xFF2d5d7b),
+                                                      width: 1),
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  color: Colors.grey[300]),
+                                              child: Center(
+                                                child: Text(
+                                                  'Waist :${snapshot!.data?.result![index].waist}' ??
+                                                      '',
+                                                  style: GoogleFonts.openSans(
+                                                    color: Colors.black,
+                                                    fontSize: 15.0,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                  ),
+                                                ),
                                               ),
                                             ),
                                           ],

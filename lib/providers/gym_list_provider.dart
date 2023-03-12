@@ -25,8 +25,10 @@ class GymListProvider extends ChangeNotifier {
         _result = GymListModel.fromJson(data);
 
         if (_result?.response == false) {
+          print(_result?.msg.toString());
           var msg = _result?.msg.toString();
-          showSnackBar(msg!, context, color: Colors.red);
+
+          showSnackBar(msg!, context, color: Colors.indigo);
           notifyListeners();
         }
         setGymListSharedPreference(

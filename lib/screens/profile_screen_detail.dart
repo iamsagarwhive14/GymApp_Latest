@@ -22,6 +22,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
   String checkOutTime = '';
   String token = '';
   String gymLogo = '';
+  bool _isLoading = true;
 
   Future<void> getPersonDetailSharedPreference() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -38,6 +39,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
   @override
   void initState() {
     getPersonDetailSharedPreference();
+    _isLoading = false;
     super.initState();
   }
 
@@ -70,7 +72,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                               height: MediaQuery.of(context).size.height * 0.01,
                             ),
                             CircleAvatar(
-                                backgroundColor: Colors.white,
+                                backgroundColor: Colors.teal,
                                 radius: 70.0,
                                 child: FutureBuilder(
                                   future:
@@ -151,6 +153,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                             width: 5.0,
                           ),
                           const Image(
+                            color: const Color(0xFF2d5d7b),
                             image: AssetImage(
                               'assets/images/noun_Walk_1826969.png',
                             ),
@@ -177,7 +180,8 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                                 ?.result.checkInTime ==
                                             null
                                         ? () async {
-                                            await dataProvider.checkInData();
+                                            await dataProvider
+                                                .checkInData(context);
                                           }
                                         : null,
                                   ),
@@ -229,7 +233,8 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                               ?.checkInTime ==
                                           null
                                       ? () async {
-                                          await dataProvider.checkOutData();
+                                          await dataProvider
+                                              .checkOutData(context);
                                         }
                                       : null,
                                 ),
@@ -257,6 +262,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                             );
                           }),
                           Image(
+                            color: const Color(0xFF2d5d7b),
                             image: AssetImage('assets/images/Group 466.png'),
                           ),
                           SizedBox(
@@ -313,7 +319,8 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                     margin: EdgeInsets.only(top: 5),
                                     padding: EdgeInsets.all(5),
                                     decoration: BoxDecoration(
-                                      color: Colors.cyanAccent.withOpacity(0.2),
+                                      color: const Color(0xFF2d5d7b)
+                                          .withOpacity(0.5),
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: Center(
@@ -370,187 +377,6 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                     );
                   }),
             ),
-
-            // Container(
-            //   padding: const EdgeInsets.all(8),
-            //   child: Card(
-            //     elevation: 5.0,
-            //     color: Colors.white,
-            //     shape: RoundedRectangleBorder(
-            //       borderRadius: BorderRadius.circular(10),
-            //     ),
-            //     child: Row(
-            //       children: [
-            //         Container(
-            //           height: 100,
-            //           width: 120,
-            //           decoration: BoxDecoration(
-            //               borderRadius: BorderRadius.circular(10),
-            //               image: DecorationImage(
-            //                   fit: BoxFit.cover,
-            //                   image:
-            //                       AssetImage('assets/images/unnamed.png'))),
-            //           margin: const EdgeInsets.all(10),
-            //           // child: const Image(
-            //           //   fit: BoxFit.cover,
-            //           //   image: AssetImage('assets/images/imagesjohny.jpg'),
-            //           // ),
-            //         ),
-            //         const SizedBox(
-            //           width: 18.0,
-            //         ),
-            //         Column(
-            //           crossAxisAlignment: CrossAxisAlignment.start,
-            //           children: [
-            //             Container(
-            //               width: 100,
-            //               margin: EdgeInsets.only(top: 5),
-            //               padding: EdgeInsets.all(5),
-            //               decoration: BoxDecoration(
-            //                 color: Colors.cyanAccent.withOpacity(0.2),
-            //                 borderRadius: BorderRadius.circular(10),
-            //               ),
-            //               child: Center(
-            //                 child: Text(
-            //                   'Active',
-            //                   style: TextStyle(
-            //                     color: Colors.black,
-            //                     fontWeight: FontWeight.normal,
-            //                     fontSize: 15.0,
-            //                   ),
-            //                 ),
-            //               ),
-            //             ),
-            //             SizedBox(
-            //               height: 10.0,
-            //             ),
-            //             Text(
-            //               'Quick Push up ',
-            //               style: TextStyle(
-            //                 color: Colors.black,
-            //                 fontSize: 17.0,
-            //                 fontWeight: FontWeight.bold,
-            //               ),
-            //             ),
-            //             SizedBox(
-            //               height: 10.0,
-            //             ),
-            //             Text(
-            //               'Start Date:2022/02/04 ',
-            //               style: TextStyle(
-            //                 color: Colors.grey,
-            //                 fontSize: 13.0,
-            //                 fontWeight: FontWeight.w700,
-            //               ),
-            //             ),
-            //             SizedBox(
-            //               height: 10.0,
-            //             ),
-            //             Text(
-            //               'End Date:2022/02/04 ',
-            //               style: TextStyle(
-            //                 color: Colors.grey,
-            //                 fontSize: 13.0,
-            //                 fontWeight: FontWeight.w700,
-            //               ),
-            //             ),
-            //             SizedBox(
-            //               height: 5.0,
-            //             ),
-            //           ],
-            //         )
-            //       ],
-            //     ),
-            //   ),
-            // ),
-            // Container(
-            //   padding: const EdgeInsets.all(8),
-            //   child: Card(
-            //     elevation: 5.0,
-            //     color: Colors.white,
-            //     shape: RoundedRectangleBorder(
-            //       borderRadius: BorderRadius.circular(10),
-            //     ),
-            //     child: Row(
-            //       children: [
-            //         Container(
-            //           height: 100,
-            //           width: 120,
-            //           decoration: BoxDecoration(
-            //               borderRadius: BorderRadius.circular(10),
-            //               image: DecorationImage(
-            //                   fit: BoxFit.cover,
-            //                   image:
-            //                       AssetImage('assets/images/unnamed.png'))),
-            //           margin: const EdgeInsets.all(10),
-            //         ),
-            //         const SizedBox(
-            //           width: 18.0,
-            //         ),
-            //         Column(
-            //           crossAxisAlignment: CrossAxisAlignment.start,
-            //           children: [
-            //             Container(
-            //               width: 100,
-            //               margin: EdgeInsets.only(top: 5),
-            //               padding: EdgeInsets.all(5),
-            //               decoration: BoxDecoration(
-            //                 color: Colors.cyanAccent.withOpacity(0.2),
-            //                 borderRadius: BorderRadius.circular(10),
-            //               ),
-            //               child: Center(
-            //                 child: Text(
-            //                   'Active',
-            //                   style: TextStyle(
-            //                     color: Colors.black,
-            //                     fontWeight: FontWeight.normal,
-            //                     fontSize: 15.0,
-            //                   ),
-            //                 ),
-            //               ),
-            //             ),
-            //             SizedBox(
-            //               height: 10.0,
-            //             ),
-            //             Text(
-            //               'Gym + Cardio ',
-            //               style: TextStyle(
-            //                 color: Colors.black,
-            //                 fontSize: 17.0,
-            //                 fontWeight: FontWeight.bold,
-            //               ),
-            //             ),
-            //             SizedBox(
-            //               height: 10.0,
-            //             ),
-            //             Text(
-            //               'Start Date:2022/02/04 ',
-            //               style: TextStyle(
-            //                 color: Colors.grey,
-            //                 fontSize: 13.0,
-            //                 fontWeight: FontWeight.w700,
-            //               ),
-            //             ),
-            //             SizedBox(
-            //               height: 10.0,
-            //             ),
-            //             Text(
-            //               'End Date:2022/02/04 ',
-            //               style: TextStyle(
-            //                 color: Colors.grey,
-            //                 fontSize: 13.0,
-            //                 fontWeight: FontWeight.w700,
-            //               ),
-            //             ),
-            //             SizedBox(
-            //               height: 10.0,
-            //             ),
-            //           ],
-            //         )
-            //       ],
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ),

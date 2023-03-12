@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../helper/show_snackbar.dart';
 import '../model/checkoutmodel/CheckOutModel.dart';
 import '../utilities/constant.dart';
 
@@ -10,7 +11,7 @@ class CheckOutProvider extends ChangeNotifier {
   CheckOutModel? _checkOutResult;
   CheckOutModel? get checkOutResult => _checkOutResult;
   String? checkOutTime = '';
-  Future<CheckOutModel?> checkOutData() async {
+  Future<CheckOutModel?> checkOutData(BuildContext context) async {
     var data;
     SharedPreferences _prefs = await SharedPreferences.getInstance();
 
@@ -33,6 +34,13 @@ class CheckOutProvider extends ChangeNotifier {
       if (response.statusCode == 200) {
         data = await jsonDecode(response.body.toString());
         _checkOutResult = CheckOutModel.fromJson(data);
+        if (_checkOutResult?.response == false) {
+          print(_checkOutResult?.msg.toString());
+          var msg = _checkOutResult?.msg.toString();
+
+          showSnackBar(msg!, context, color: Colors.indigo);
+          notifyListeners();
+        }
         print(_checkOutResult);
         var responseJson = jsonDecode(response.body);
         notifyListeners();

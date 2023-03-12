@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gym_mgmtsystem/model/check/CheckInModel.dart';
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../helper/show_snackbar.dart';
 import '../utilities/constant.dart';
 
 class CheckInProvider extends ChangeNotifier {
@@ -10,7 +11,7 @@ class CheckInProvider extends ChangeNotifier {
   CheckInModel? get checkInResult => _checkInResult;
   String? checkInTime = '';
 
-  Future<CheckInModel?> checkInData() async {
+  Future<CheckInModel?> checkInData(BuildContext context) async {
     var data;
     SharedPreferences _prefs = await SharedPreferences.getInstance();
 
@@ -33,6 +34,13 @@ class CheckInProvider extends ChangeNotifier {
       if (response.statusCode == 200) {
         data = await jsonDecode(response.body.toString());
         _checkInResult = CheckInModel.fromJson(data);
+        if (_checkInResult?.response == false) {
+          print(_checkInResult?.msg.toString());
+          var msg = _checkInResult?.msg.toString();
+
+          showSnackBar(msg!, context, color: Colors.indigo);
+          notifyListeners();
+        }
         var responseJson = jsonDecode(response.body);
         notifyListeners();
         setCheckInTimeSharedPreference(
