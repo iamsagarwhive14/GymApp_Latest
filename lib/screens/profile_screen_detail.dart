@@ -244,7 +244,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                   dataProvider.checkOutResult?.result
                                               ?.checkInTime !=
                                           null
-                                      ? checkInTime.toString()
+                                      ? checkOutTime.toString()
                                       : 'your time',
                                   style: TextStyle(
                                       color: Colors.black,
