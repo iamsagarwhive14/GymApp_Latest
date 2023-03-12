@@ -5,6 +5,8 @@ import 'package:gym_mgmtsystem/utilities/routes/route_name.dart';
 
 import '../../screens/home_screen.dart';
 import '../../screens/login_screen.dart';
+import '../../screens/newsScreen/news_details_screen.dart';
+import '../../screens/newsScreen/news_screen.dart';
 import '../../screens/splash/splash_screen.dart';
 import '../../screens/welcome/gym_welcome_screen.dart';
 
@@ -22,6 +24,10 @@ class Routes {
         return MaterialPageRoute(builder: (_) => const WelcomeScreen());
       case RouteName.profileScreenDetails:
         return MaterialPageRoute(builder: (_) => const ProfileScreenDetail());
+      case RouteName.NewsScreen:
+        return MaterialPageRoute(builder: (_) => const NewsScreen());
+      // case RouteName.NewsDetailsScreen:
+      //   return MaterialPageRoute(builder: (_) => const NewsDetailsScreen());
 
       default:
         return MaterialPageRoute(builder: (_) {

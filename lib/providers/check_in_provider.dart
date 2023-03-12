@@ -58,7 +58,6 @@ class CheckInProvider extends ChangeNotifier {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     var sharedCheckInTime = _prefs.getString('checkInTime');
     checkInTime = sharedCheckInTime!;
-    print(checkInTime);
     notifyListeners();
     return checkInTime;
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:gym_mgmtsystem/model/measurement/Measurement_model.dart';
 import 'package:provider/provider.dart';
 import '../providers/measurement_provider.dart';
@@ -13,10 +14,16 @@ class MeasurementScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'measurement',
+        title: Center(
+          child: Text(
+            'Measurement',
+            style: GoogleFonts.roboto(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: const Color(0xFF2d5d7b),
       ),
       body: Container(
         width: double.infinity,
@@ -44,7 +51,7 @@ class MeasurementScreen extends StatelessWidget {
                               padding: const EdgeInsets.all(12.0),
                               child: Flexible(
                                 child: Card(
-                                  elevation: 20.0,
+                                  elevation: 10.0,
                                   color: Colors.white,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15.0),
@@ -53,12 +60,18 @@ class MeasurementScreen extends StatelessWidget {
                                     children: [
                                       Row(
                                         children: [
-                                          const Image(
-                                            image: AssetImage(
-                                                'assets/images/noun_calories_1180285.png'),
+                                          Container(
+                                            margin: EdgeInsets.only(left: 10),
+                                            child: const Image(
+                                              width: 100,
+                                              height: 100,
+                                              fit: BoxFit.cover,
+                                              image: AssetImage(
+                                                  'assets/images/bodyimage.png'),
+                                            ),
                                           ),
                                           const SizedBox(
-                                            width: 12.0,
+                                            width: 20.0,
                                           ),
                                           Column(
                                             crossAxisAlignment:
@@ -67,12 +80,12 @@ class MeasurementScreen extends StatelessWidget {
                                               const SizedBox(
                                                 width: 18.0,
                                               ),
-                                              const Text(
+                                              Text(
                                                 'Measurement',
-                                                style: TextStyle(
+                                                style: GoogleFonts.openSans(
                                                   color: Color(0xFF00F0FF),
                                                   fontWeight: FontWeight.w900,
-                                                  fontSize: 20.0,
+                                                  fontSize: 18.0,
                                                 ),
                                               ),
                                               const SizedBox(
@@ -83,7 +96,7 @@ class MeasurementScreen extends StatelessWidget {
                                                     '',
                                                 style: const TextStyle(
                                                   color: Colors.black,
-                                                  fontSize: 12.0,
+                                                  fontSize: 15.0,
                                                   fontWeight: FontWeight.bold,
                                                 ),
                                               ),
@@ -91,23 +104,22 @@ class MeasurementScreen extends StatelessWidget {
                                                 height: 5.0,
                                               ),
                                               Text(
-                                                'calf :${snapshot!.data?.result![index].calf}' ??
-                                                    '',
-                                                style: const TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 12.0,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
+                                                  'calf :${snapshot!.data?.result![index].calf}' ??
+                                                      '',
+                                                  style: GoogleFonts.openSans(
+                                                    color: Colors.black,
+                                                    fontSize: 15.0,
+                                                    fontWeight: FontWeight.bold,
+                                                  )),
                                               const SizedBox(
                                                 height: 5.0,
                                               ),
                                               Text(
                                                 'chest :${snapshot!.data?.result![index].chest}' ??
                                                     '',
-                                                style: const TextStyle(
+                                                style: GoogleFonts.openSans(
                                                   color: Colors.black,
-                                                  fontSize: 12.0,
+                                                  fontSize: 15.0,
                                                   fontWeight: FontWeight.bold,
                                                 ),
                                               ),
@@ -117,10 +129,10 @@ class MeasurementScreen extends StatelessWidget {
                                               Text(
                                                 'Forearm :${snapshot!.data?.result![index].forearm}' ??
                                                     '',
-                                                style: TextStyle(
-                                                  color: Colors.grey,
-                                                  fontSize: 13.0,
-                                                  fontWeight: FontWeight.w700,
+                                                style: GoogleFonts.openSans(
+                                                  color: Colors.black,
+                                                  fontSize: 15.0,
+                                                  fontWeight: FontWeight.bold,
                                                 ),
                                               ),
                                               const SizedBox(
@@ -129,10 +141,10 @@ class MeasurementScreen extends StatelessWidget {
                                               Text(
                                                 'Hips :${snapshot!.data?.result![index].hips}' ??
                                                     '',
-                                                style: TextStyle(
-                                                  color: Colors.grey,
-                                                  fontSize: 13.0,
-                                                  fontWeight: FontWeight.w700,
+                                                style: GoogleFonts.openSans(
+                                                  color: Colors.black,
+                                                  fontSize: 15.0,
+                                                  fontWeight: FontWeight.bold,
                                                 ),
                                               ),
                                               const SizedBox(
@@ -151,6 +163,11 @@ class MeasurementScreen extends StatelessWidget {
                                             Text(
                                               'Weight :${snapshot!.data?.result![index].weight}' ??
                                                   '',
+                                              style: GoogleFonts.openSans(
+                                                color: Colors.black,
+                                                fontSize: 15.0,
+                                                fontWeight: FontWeight.normal,
+                                              ),
                                             ),
                                             SizedBox(
                                               width: 10.0,
@@ -158,6 +175,11 @@ class MeasurementScreen extends StatelessWidget {
                                             Text(
                                               'Waist :${snapshot!.data?.result![index].waist}' ??
                                                   '',
+                                              style: GoogleFonts.openSans(
+                                                color: Colors.black,
+                                                fontSize: 15.0,
+                                                fontWeight: FontWeight.normal,
+                                              ),
                                             ),
                                           ],
                                         ),

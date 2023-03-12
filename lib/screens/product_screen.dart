@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:gym_mgmtsystem/model/product/ProductModel.dart';
 import 'package:gym_mgmtsystem/providers/product_provider.dart';
 import 'package:gym_mgmtsystem/screens/product/product_details.dart';
@@ -233,12 +234,14 @@ class _ProductScreenState extends State<ProductScreen> {
                                                             .products[index]
                                                             .name ??
                                                         'saguaro',
-                                                    style: TextStyle(
-                                                      fontSize: 15,
-                                                      fontWeight:
-                                                          FontWeight.normal,
+                                                    style: GoogleFonts.openSans(
                                                       color: Colors.black,
+                                                      fontSize: 13.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                     ),
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
                                                   ),
                                                 ),
                                                 Align(

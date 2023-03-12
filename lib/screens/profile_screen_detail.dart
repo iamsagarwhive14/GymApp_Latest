@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:gym_mgmtsystem/providers/check_out_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -155,51 +156,57 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                             ),
                           ),
                           Consumer<CheckInProvider>(
-                              builder: (context, dataProvider, child) {
-                            return Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: const Color(0xFF2d5d7b),
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
+                            builder: (context, dataProvider, child) {
+                              return Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: const Color(0xFF2d5d7b),
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10)),
+                                      ),
+                                    ),
+                                    child: Text(
+                                      'CheckIn',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                    onPressed: dataProvider.checkInResult
+                                                ?.result.checkInTime ==
+                                            null
+                                        ? () async {
+                                            await dataProvider.checkInData();
+                                          }
+                                        : null,
+                                  ),
+                                  Text(
+                                    'CheckIn: ',
+                                    style: GoogleFonts.openSans(
+                                      color: Colors.black,
+                                      fontSize: 15.0,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  child: Text(
-                                    'checkIn',
-                                    style: TextStyle(color: Colors.white),
+                                  Text(
+                                    dataProvider.checkInResult?.result
+                                                .checkInTime !=
+                                            null
+                                        ? checkInTime.toString()!
+                                        : 'your time ',
+                                    style: const TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 15),
                                   ),
-                                  onPressed: dataProvider.checkInResult?.result
-                                              .checkInTime ==
-                                          null
-                                      ? () async {
-                                          await dataProvider.checkInData();
-                                        }
-                                      : null,
-                                ),
-                                const Text(
-                                  'checkIn: ',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16),
-                                ),
-                                Text(
-                                  dataProvider.checkInResult?.result
-                                              .checkInTime !=
-                                          null
-                                      ? checkInTime.toString()!
-                                      : 'your time ',
-                                  style: const TextStyle(
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 15),
-                                ),
-                              ],
-                            );
-                          }),
+                                ],
+                              );
+                            },
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
                           Consumer<CheckOutProvider>(
                               builder: (context, dataProvider, child) {
                             return Column(
@@ -214,11 +221,11 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                     ),
                                   ),
                                   child: Text(
-                                    'checkOut',
+                                    'CheckOut',
                                     style: TextStyle(color: Colors.white),
                                   ),
                                   onPressed: dataProvider.checkOutResult?.result
-                                              .checkOutTime ==
+                                              ?.checkInTime ==
                                           null
                                       ? () async {
                                           await dataProvider.checkOutData();
@@ -226,21 +233,21 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                       : null,
                                 ),
                                 Text(
-                                  'checkOut: ',
-                                  style: TextStyle(
+                                  'CheckOut: ',
+                                  style: GoogleFonts.openSans(
                                     color: Colors.black,
+                                    fontSize: 15.0,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 16,
                                   ),
                                 ),
                                 Text(
                                   dataProvider.checkOutResult?.result
-                                              .checkOutTime !=
+                                              ?.checkInTime !=
                                           null
-                                      ? checkOutTime.toString()
+                                      ? checkInTime.toString()
                                       : 'your time',
                                   style: TextStyle(
-                                      color: Colors.grey,
+                                      color: Colors.black,
                                       fontWeight: FontWeight.normal,
                                       fontSize: 15),
                                 ),
@@ -308,14 +315,12 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: Center(
-                                      child: Text(
-                                        'Active',
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.normal,
-                                          fontSize: 15.0,
-                                        ),
-                                      ),
+                                      child: Text('Active',
+                                          style: GoogleFonts.openSans(
+                                            color: Colors.black,
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.w400,
+                                          )),
                                     ),
                                   ),
                                   SizedBox(

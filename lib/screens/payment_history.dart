@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:gym_mgmtsystem/model/PaymentHistory.dart';
 import 'package:gym_mgmtsystem/providers/payment_provider.dart';
 import 'package:gym_mgmtsystem/screens/details_screen.dart';
@@ -37,7 +38,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(40),
           child: AppBar(
-            backgroundColor: Colors.transparent,
+            backgroundColor: const Color(0xFF2d5d7b),
             automaticallyImplyLeading: false,
             elevation: 0.0,
             title: const Text(
@@ -123,7 +124,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                                             children: [
                                               Container(
                                                 height: 100,
-                                                width: 120,
+                                                width: 100,
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
@@ -134,11 +135,10 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                                                       // AssetImage('assets/images/unnamed.png'),
                                                       ),
                                                 ),
-                                                margin:
-                                                    const EdgeInsets.all(10),
+                                                margin: const EdgeInsets.all(5),
                                               ),
                                               const SizedBox(
-                                                width: 12.0,
+                                                width: 8.0,
                                               ),
                                               Column(
                                                 crossAxisAlignment:
@@ -162,11 +162,12 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                                                     child: Center(
                                                       child: Text(
                                                         'Active',
-                                                        style: TextStyle(
+                                                        style: GoogleFonts
+                                                            .openSans(
                                                           color: Colors.black,
-                                                          fontWeight:
-                                                              FontWeight.normal,
                                                           fontSize: 15.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
                                                         ),
                                                       ),
                                                     ),
@@ -175,14 +176,20 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                                                     height: 10.0,
                                                   ),
                                                   Text(
-                                                    'Subscription:${snapshot!.data?.result![index].subscription}' ??
+                                                    snapshot!
+                                                            .data
+                                                            ?.result![index]
+                                                            .subscription ??
                                                         ' ',
-                                                    style: const TextStyle(
+                                                    style: GoogleFonts.openSans(
                                                       color: Colors.black,
                                                       fontSize: 12.0,
                                                       fontWeight:
                                                           FontWeight.bold,
                                                     ),
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    maxLines: 1,
                                                   ),
                                                   const SizedBox(
                                                     height: 10,
@@ -190,7 +197,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                                                   Text(
                                                     'Fiscal Year :${snapshot!.data?.result![index].fiscalYear}' ??
                                                         '',
-                                                    style: const TextStyle(
+                                                    style: GoogleFonts.openSans(
                                                       color: Colors.black,
                                                       fontSize: 12.0,
                                                       fontWeight:
@@ -203,7 +210,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                                                   Text(
                                                     'Payment Date :${snapshot!.data?.result![index].fiscalYear}' ??
                                                         '',
-                                                    style: const TextStyle(
+                                                    style: GoogleFonts.openSans(
                                                       color: Colors.black,
                                                       fontSize: 12.0,
                                                       fontWeight:
@@ -213,25 +220,25 @@ class _PaymentHistoryState extends State<PaymentHistory> {
                                                   const SizedBox(
                                                     height: 5.0,
                                                   ),
-                                                  const Text(
+                                                  Text(
                                                     'Start Date:2022/02/04 ',
-                                                    style: TextStyle(
+                                                    style: GoogleFonts.openSans(
                                                       color: Colors.grey,
-                                                      fontSize: 13.0,
+                                                      fontSize: 12.0,
                                                       fontWeight:
-                                                          FontWeight.w700,
+                                                          FontWeight.bold,
                                                     ),
                                                   ),
                                                   const SizedBox(
                                                     height: 5.0,
                                                   ),
-                                                  const Text(
+                                                  Text(
                                                     'End Date:2022/02/04 ',
-                                                    style: TextStyle(
+                                                    style: GoogleFonts.openSans(
                                                       color: Colors.grey,
-                                                      fontSize: 13.0,
+                                                      fontSize: 12.0,
                                                       fontWeight:
-                                                          FontWeight.w700,
+                                                          FontWeight.bold,
                                                     ),
                                                   ),
                                                   const SizedBox(

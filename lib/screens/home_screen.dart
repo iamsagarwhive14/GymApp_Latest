@@ -2,6 +2,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 import 'package:gym_mgmtsystem/screens/measurement.dart';
+import 'package:gym_mgmtsystem/screens/newsScreen/news_screen.dart';
 import 'package:gym_mgmtsystem/screens/payment_history.dart';
 import 'package:gym_mgmtsystem/screens/product_screen.dart';
 import 'package:gym_mgmtsystem/screens/profile_screen_detail.dart';
@@ -168,12 +169,12 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color(0xFF2d5d7b),
         onPressed: () {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) => PaymentHistory(),
-          //   ),
-          // );
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => NewsScreen(),
+            ),
+          );
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),

@@ -1,28 +1,40 @@
-import 'Result.dart';
-
 class CheckOutModel {
-  CheckOutModel({
-    required this.response,
-    required this.msg,
-    required this.result,
-  });
+  bool? response;
+  String? msg;
+  Result? result;
 
-  CheckOutModel.fromJson(dynamic json) {
+  CheckOutModel({this.response, this.msg, this.result});
+
+  CheckOutModel.fromJson(Map<String, dynamic> json) {
     response = json['response'];
     msg = json['msg'];
-    result = (json['result'] != null ? Result.fromJson(json['result']) : null)!;
+    result =
+        json['result'] != null ? new Result.fromJson(json['result']) : null;
   }
-  late bool response;
-  late String msg;
-  late Result result;
 
   Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['response'] = response;
-    map['msg'] = msg;
-    if (result != null) {
-      map['result'] = result.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['response'] = this.response;
+    data['msg'] = this.msg;
+    if (this.result != null) {
+      data['result'] = this.result!.toJson();
     }
-    return map;
+    return data;
+  }
+}
+
+class Result {
+  String? checkInTime;
+
+  Result({this.checkInTime});
+
+  Result.fromJson(Map<String, dynamic> json) {
+    checkInTime = json['check_in_time'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['check_in_time'] = this.checkInTime;
+    return data;
   }
 }

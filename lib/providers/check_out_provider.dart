@@ -33,6 +33,7 @@ class CheckOutProvider extends ChangeNotifier {
       if (response.statusCode == 200) {
         data = await jsonDecode(response.body.toString());
         _checkOutResult = CheckOutModel.fromJson(data);
+        print(_checkOutResult);
         var responseJson = jsonDecode(response.body);
         notifyListeners();
         setCheckOutTimeSharedPreference(
@@ -41,11 +42,10 @@ class CheckOutProvider extends ChangeNotifier {
 
         return CheckOutModel.fromJson(responseJson);
       } else {
-        print('data is not available');
         print('data  is not created ' + response.statusCode.toString());
       }
     } catch (e) {
-      print(e.toString());
+      print(' this is checkout error $e');
     }
   }
 
