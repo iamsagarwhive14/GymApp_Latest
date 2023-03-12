@@ -23,12 +23,6 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
   String token = '';
   String gymLogo = '';
 
-  @override
-  void initState() {
-    super.initState();
-    getPersonDetailSharedPreference();
-  }
-
   Future<void> getPersonDetailSharedPreference() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     setState(() {
@@ -39,6 +33,12 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
       token = sharedPreferences.getString('token') ?? '';
       gymLogo = sharedPreferences.getString('logo') ?? '';
     });
+  }
+
+  @override
+  void initState() {
+    getPersonDetailSharedPreference();
+    super.initState();
   }
 
   @override
@@ -59,7 +59,7 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(50),
                           bottomRight: Radius.circular(50)),
-                      color: const Color(0xFF2d5d7b),
+                      color: Color(0xFF2d5d7b),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -193,7 +193,8 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                     dataProvider.checkInResult?.result
                                                 .checkInTime !=
                                             null
-                                        ? checkInTime.toString()!
+                                        ? '${dataProvider.checkInResult?.result.checkInTime}'
+                                            .toString()
                                         : 'your time ',
                                     style: const TextStyle(
                                         color: Colors.black,
@@ -244,7 +245,8 @@ class _ProfileScreenDetailState extends State<ProfileScreenDetail> {
                                   dataProvider.checkOutResult?.result
                                               ?.checkInTime !=
                                           null
-                                      ? checkOutTime.toString()
+                                      ? '${dataProvider.checkOutResult?.result!?.checkInTime!}'
+                                          .toString()
                                       : 'your time',
                                   style: TextStyle(
                                       color: Colors.black,
